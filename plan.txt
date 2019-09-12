@@ -8,25 +8,26 @@ Tell us about why you are applying for the programme
 
   Personal reasons
     I can't stop coding. I have tried over the years and have met with some success but it has always been short lived.
-    I convinced myself I didn't want to work in the progamming industry as a youth but I keep finding excuse to come back to it.
-    Often these excuses have just been flimsy pretexs.
-    After decades of self denial I finally had an epihany a couple of years back and got religion.
-    since then I have had to face some stark truths...
+    I convinced myself I didn't want to work in the programming industry as a youth but I keep finding excuse to come back to it.
+    Often these excuses have just been flimsy pretexts.
+    After decades of self denial I had an epihany a couple of years back and got religion, good practice wise.
+    Since then I have had to face some stark truths...
       I love coding at a fundamental level and I must do it, and do it often, to remain sane.
-      I have been a bit of a lone wolf / cowboy coder in the past, I must now undo all that and become a paragon of virtue.
-      I have always programmed alone, I must learn how to work closely with other people in a team.
+      I have been a bit of a lone wolf / cowboy coder in the past, I must now undo all that and become a (paragon of virtue||professional||upstanding citizen)?.
+      Coding takes a lot of time, coding well takes even more, and I don't have that kind of spare time.
+      Coding alone is really limiting me, I want to learn how to work closely with other people in a team.
       The only way I can spend as much time coding as I want to is for it to become my profession.
 
   The course itself
 
-    To become employable I need to demonstrate that I can keep pace with contemporary technology and tooling and boot camps look like the ideal way to do that.
-    I had given some thought to boot camps for a while but the expense of tens of thousands in fees on top of the extra childcare costs and the opportunity
-    cost of not working for several months made it seem rather distant and maybe unattainable.
+    To get a job I need to demonstrate that I can learn new tech quickly and boot camps look like the ideal way to do that.
+    Consequently I had been thinking about boot camps for a while but adding the expense of tens of thousands in fees on top of the extra childcare costs and the opportunity
+    cost of not working for several months made them seem rather unattainable.
     I was explaining all this to a friend of mine who is a co-op evangilist and he told me about Founders and Coders.
     I immediately got very excited.
     Everything about the organisation and it's ethos seems right to me.
     The paying it forward model is fantastic, it is how we should all work together and help each other learn.
-    The focus on increasing representation for people who might not fit the traditional junior programmer mold is really positive.
+    The focus on increasing representation for people who might not fit the traditional junior programmer mold is really positive (and, for me, germane.)?
     The roster of companies who hire from the program include a heartening number of social enterprises and progressive businesses, the kind of places I would ideally like to work.
 
 Contain a link back to the GitHub repo that contains the code for your site
