@@ -13,20 +13,20 @@ Tell us about why you are applying for the programme
     After decades of self denial I had an epihany a couple of years back and got religion, good practice wise.
     Since then I have had to face some stark truths...
       I love coding at a fundamental level and I must do it, and do it often, to remain sane.
-      I have been a bit of a lone wolf / cowboy coder in the past, I must now undo all that and become a (paragon of virtue||professional||upstanding citizen)?.
+      I have been a cowboy coder and a lone wolf in the past, I must now undo all that and become a (paragon of virtue||professional||upstanding citizen)?.
       Coding takes a lot of time, coding well takes even more, and I don't have that kind of spare time.
-      Coding alone is really limiting me, I want to learn how to work closely with other people in a team.
+      Coding alone is limiting and lonely, I want people to use what I write and I want to work on non trivial projects.
+      This means team work but I have no experience of working on a team.
       The only way I can spend as much time coding as I want to is for it to become my profession.
 
   The course itself
 
-    To get a job I need to demonstrate that I can learn new tech quickly and boot camps look like the ideal way to do that.
-    Consequently I had been thinking about boot camps for a while but adding the expense of tens of thousands in fees on top of the extra childcare costs and the opportunity
-    cost of not working for several months made them seem rather unattainable.
+    I have been thinking about boot camps for a while but adding the expense of tens of thousands in fees on top of
+    the extra childcare costs and the opportunity cost of not working for several months made them seem rather unattainable.
     I was explaining all this to a friend of mine who is a co-op evangilist and he told me about Founders and Coders.
     I immediately got very excited.
     Everything about the organisation and it's ethos seems right to me.
-    The paying it forward model is fantastic, it is how we should all work together and help each other learn.
+    The peer led, paying it forward model is fantastic, it is how we should all work together and help each other learn.
     The focus on increasing representation for people who might not fit the traditional junior programmer mold is really positive (and, for me, germane.)?
     The roster of companies who hire from the program include a heartening number of social enterprises and progressive businesses, the kind of places I would ideally like to work.
 
@@ -36,9 +36,14 @@ Contain a link back to the GitHub repo that contains the code for your site
 
 Contain links to your freeCodeCamp (please make sure that your profile is public)
 
+  https://www.freecodecamp.org/fcc93f08c83-6f0e-4583-a63f-bfd007f3f27f
+
 and Codewars pages
 
   https://www.codewars.com/users/r0g
 
 Include an image carousel (the image carousel must be built into your website, a link to a separate page or CodePen will not be accepted)
   Find some images to use
+  Web components look interesting, maybe make the carousel a web component?
+  Make sure it's responsive, Use @media to change styles for different sizes as required.
+
