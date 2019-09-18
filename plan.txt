@@ -18,16 +18,21 @@ Tell us about why you are applying for the programme
     However I kept finding excuses to do a bit of coding here and there.
     With hindsight those excuses were just flimsy pretexts.
     After decades of self denial I had an epihany a few years back and got religion.
-    I started reading books on best practices and agile methodologies and modern software development.
+    I started reading books on best practices and agile methodologies*.
     Since then I have had to face some stark truths...
       I love coding at a fundamental level and I must do it, and do it often, to remain sane.
-      I have been a terrible cowboy coder and a lone wolf in the past. Now I want to become a professional.
+      I have been a terrible cowboy coder in the past. Now I want to become a real professional.
       Coding takes a lot of time, coding well takes even more, and I don't really have that kind of spare time.
       Coding alone is limiting and lonely, I want people to use what I write and I want to work on non trivial projects.
-      I have worked alone for 20 years with no colleagues to talk to and learn from.
+      I have worked alone for 20 years with no colleagues or peers to talk to and learn from.
       At the same time I am itching to try things like agile development and pair programming that I have read about.
       This means team work but I have no experience of working on a team.
       The only way I can spend as much time coding as I want to is for it to become my profession.
+
+  * The Art of Agile Development - James Shore & Shane Warden
+    Test driven development - Kent Beck
+    The mythical man month - Fred Brooks
+    Clean Code - Robert C Martin
 
   The course itself
 
