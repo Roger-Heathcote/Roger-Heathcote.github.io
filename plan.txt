@@ -8,14 +8,24 @@ Tell us about why you are applying for the programme
 
   Personal reasons
     I can't stop coding. I have tried over the years and have met with some success but it has always been short lived.
-    I convinced myself I didn't want to work in the programming industry as a youth but I keep finding excuse to come back to it.
-    Often these excuses have just been flimsy pretexts.
-    After decades of self denial I had an epihany a couple of years back and got religion, good practice wise.
+    At 16 I caught the programming bug at college and became somewhat obsessed.
+    At 18 I enrolled on a Software Engineering degree to pursue my new passion.
+    By 21 I had dropped out. I didn't like the town, or my classmates or the course. I was bitterly disappointed.
+    I vowed to never work as a programmer or a software engineer.
+    I stopped programming and enrolled on a multimedia course, which I enjoyed much more.
+    After that I worked in IT support for a few years then set up shop as an IT support & repair guy.
+    All was, more or less, well for the next 15 years.
+    However I kept finding excuses to do a bit of coding here and there.
+    With hindsight those excuses were just flimsy pretexts.
+    After decades of self denial I had an epihany a few years back and got religion.
+    I started reading books on best practices and agile methodologies and modern software development.
     Since then I have had to face some stark truths...
       I love coding at a fundamental level and I must do it, and do it often, to remain sane.
-      I have been a cowboy coder and a lone wolf in the past, I must now undo all that and become a (paragon of virtue||professional||upstanding citizen)?.
-      Coding takes a lot of time, coding well takes even more, and I don't have that kind of spare time.
+      I have been a terrible cowboy coder and a lone wolf in the past. Now I want to become a professional.
+      Coding takes a lot of time, coding well takes even more, and I don't really have that kind of spare time.
       Coding alone is limiting and lonely, I want people to use what I write and I want to work on non trivial projects.
+      I have worked alone for 20 years with no colleagues to talk to and learn from.
+      At the same time I am itching to try things like agile development and pair programming that I have read about.
       This means team work but I have no experience of working on a team.
       The only way I can spend as much time coding as I want to is for it to become my profession.
 
@@ -25,10 +35,10 @@ Tell us about why you are applying for the programme
     the extra childcare costs and the opportunity cost of not working for several months made them seem rather unattainable.
     I was explaining all this to a friend of mine who is a co-op evangilist and he told me about Founders and Coders.
     I immediately got very excited.
-    Everything about the organisation and it's ethos seems right to me.
-    The peer led, paying it forward model is fantastic, it is how we should all work together and help each other learn.
+    Everything about the organisation and it's ethos seems perfect to me.
+    The peer led, paying it forward model is fantastic. It is how we should all work together and help each other learn.
     The focus on increasing representation for people who might not fit the traditional junior programmer mold is really positive (and, for me, germane.)?
-    The roster of companies who hire from the program include a heartening number of social enterprises and progressive businesses, the kind of places I would ideally like to work.
+    The roster of companies who hire from the program include a heartening number of social enterprises and progressive businesses, the kind of places I want to work.
 
 Contain a link back to the GitHub repo that contains the code for your site
 
@@ -44,7 +54,7 @@ Contain links to your freeCodeCamp (please make sure that your profile is public
 
         x Basic HTML and HTML5
         x Basic CSS
-        Responsive Web Design Principles
+        x Responsive Web Design Principles
         CSS Flexbox
 
     JavaScript Algorithms and Data Structures Certification
@@ -64,4 +74,14 @@ Include an image carousel (the image carousel must be built into your website, a
   Find some images to use
   Web components look interesting, maybe make the carousel a web component?
   Make sure it's responsive, Use @media to change styles for different sizes as required.
+  FCC on making images responsive
+      img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+    The max-width property of 100% scales the image to fit the width of its container,
+    but the image won't stretch wider than its original width. Setting the display property
+    to block changes the image from an inline element (its default), to a block element on
+    its own line. The height property of auto keeps the original aspect ratio of the image.
 
