@@ -60,7 +60,7 @@ Contain links to your freeCodeCamp (please make sure that your profile is public
         x Basic HTML and HTML5
         x Basic CSS
         x Responsive Web Design Principles
-        CSS Flexbox
+        x CSS Flexbox
 
     JavaScript Algorithms and Data Structures Certification
 
