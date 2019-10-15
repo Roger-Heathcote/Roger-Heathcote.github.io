@@ -76,17 +76,31 @@ and Codewars pages
   https://www.codewars.com/users/r0g
 
 Include an image carousel (the image carousel must be built into your website, a link to a separate page or CodePen will not be accepted)
-  Find some images to use
-  Web components look interesting, maybe make the carousel a web component?
-  Make sure it's responsive, Use @media to change styles for different sizes as required.
-  FCC on making images responsive
-      img {
-      max-width: 100%;
-      display: block;
-      height: auto;
-    }
-    The max-width property of 100% scales the image to fit the width of its container,
-    but the image won't stretch wider than its original width. Setting the display property
-    to block changes the image from an inline element (its default), to a block element on
-    its own line. The height property of auto keeps the original aspect ratio of the image.
+
+  Goals
+    Should work with a flexible number of images
+    Should be able to start before all images have been downloaded with more images added as they arrive
+    Should permit more than one transition e.g. crossfade, left wipe, right wipe etc.
+    Should be configurable without touching the code files e.g. using a text or json file
+    Should work equally well on small and large screens
+    Allow smaller alternative image files so not to waste bandwidth for small screens
+
+  Tasks
+    Find some images to use
+
+  Notes
+    Web components look interesting, maybe make the carousel a web component?
+    Make sure it's responsive, Use @media to change styles for different sizes as required.
+    FCC on making images responsive
+        img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+      The max-width property of 100% scales the image to fit the width of its container,
+      but the image won't stretch wider than its original width. Setting the display property
+      to block changes the image from an inline element (its default), to a block element on
+      its own line. The height property of auto keeps the original aspect ratio of the image.
+    Probably going to need CSS animation properties
+
 
