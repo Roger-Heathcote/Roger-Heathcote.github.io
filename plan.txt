@@ -85,11 +85,15 @@ Include an image carousel (the image carousel must be built into your website, a
     Allow keyboard navigation between images with the left/right arrow keys
 
   Goals
-    Should work with a flexible number of images
-    Should be able to start before all images have been downloaded with more images added as they arrive
-    Should permit more than one transition e.g. crossfade, left wipe, right wipe etc.
-    Should be configurable without touching the code files e.g. using a text or json file
-    Allow smaller alternative image files so not to waste bandwidth for small screens
+    High priority...
+      Whole page should be very accessible - test with a screen reader
+      Should work with a flexible number of images.
+      Should permit more than one transition e.g. crossfade, left wipe, right wipe etc.
+    Would be nice
+      Should be able to start before all images have been downloaded with more images added as they arrive
+      Should be configurable without touching the code files e.g. using a text or json file
+      Allow smaller alternative image files so not to waste bandwidth for small screens
+      Make carousel a web component?
 
   Tasks
     Find some images to use
