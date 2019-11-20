@@ -1,0 +1,10 @@
+carousel.js
+goat.jpg
+guineapig.jpg
+hedgehog.jpg
+images.txt
+koala.jpg
+marmoset.jpg
+pandas.png
+puppy.jpg
+rabbit.jpeg
