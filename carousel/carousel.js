@@ -1,16 +1,39 @@
-function downloadImage(img, callback){
-    console.log("Downloading image file:", img);
-    callback(img);
+const live_images = [];
+
+function imageLoadHandler( event ){
+    console.log("Image load handler triggerd", event);
+
+}
+
+function handleImageList( requestResult ) {
+    console.log( "handleImageList got:", requestResult.target.response);
+    const fileNames = requestResult.target.response.split("\n");
+    fileNames.forEach( (value)=>{
+        if( /(?=^(\S|\ )+$)[^?\=\b]+\.(jpg|jpeg|png|gif)$/i.test(value) ){
+              console.log("value:", value);
+              let image = new Image();
+              image.addEventListener("load", imageLoadHandler)
+              image.addEventListener("error", e=>console.log(e) )
+              image.src = "/carousel/images/" + value;
+          }
+    });
 }
 
 function main(){
     console.log("Hi, carousel checking in.");
-    const live_images = [];
-    images.forEach(val){
-        downloadImage(val, (name)=>{ live_images.push(name) });
-    }
-    runCarousel();
     
+    const getImageList = (triesRemaining=3) => {
+        const oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", handleImageList);
+        oReq.addEventListener("error", ()=>{
+            if (triesRemaining > 0) handleImageList(tries-1);
+        });
+        oReq.open("GET", "/carousel/images.txt");
+        oReq.send();
+    }
+    getImageList();
+
+    console.log("Okay main is done now.")
 }
 
 main();
@@ -20,8 +43,15 @@ main();
 
 // Startup
 //   On page load we show a placeholder and call the loader
+// So we hardcode that into index.html and set it to invisible when the carousel starts
+// done
+
 //   The loader uses XHRequest to grabs the text file from our site that lists all the images /carousel/images.txt
+// done
+
 //   The callback from that function goes through the list and downloads the images
+// done 
+
 //   The callback from those image downloads
 //     inserts the image in the DOM with the class "carousel_image"
 //       carousel_image is invisible and cropped square
