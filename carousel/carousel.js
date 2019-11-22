@@ -2,7 +2,19 @@ const live_images = [];
 
 function imageLoadHandler( event ){
     console.log("Image load handler triggerd", event);
+    this.classList.add("carousel_image");
+    this.classList.add("hidden");
+    live_images.push( this ); // not sure we even really need this array, TODO
 
+    let parent = document.getElementById("carousel");
+    parent.appendChild( this );
+
+    if(live_images.length === 1){
+         console.log("Only one image, display it.");
+         this.classList.toggle("hidden");
+    }
+    if(live_images.length > 1){ console.log("More than one image, start the carousel if not started already")}
+    console.log(live_images);
 }
 
 function handleImageList( requestResult ) {
@@ -13,7 +25,7 @@ function handleImageList( requestResult ) {
               console.log("value:", value);
               let image = new Image();
               image.addEventListener("load", imageLoadHandler)
-              image.addEventListener("error", e=>console.log(e) )
+              image.addEventListener("error", e=>console.log("ERROR LOADING IMAGE:", e) )
               image.src = "/carousel/images/" + value;
           }
     });
@@ -54,9 +66,15 @@ main();
 
 //   The callback from those image downloads
 //     inserts the image in the DOM with the class "carousel_image"
+//   and the class hidden
+// done
+
 //       carousel_image is invisible and cropped square
 //     adds references to that image node to the end of the "images" array
 //     the images array needs to be in our global scope
+// done
+
+
 //     checks for global var CAROUSEL_STARTED - if that is false AND the length of the "images" array > 1
 //       start the carousel by calling the transition function with indexes 0 and 1 and the continue function
 // Carousel started  
@@ -74,4 +92,5 @@ main();
 //         chooses a new "next", wrapping round as neccesary
 //         sets a setTimout to call itself again
       
-      
+// Add auto checkbox
+// Add manual controls
