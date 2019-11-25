@@ -1,8 +1,9 @@
 const LIVE_IMAGES = [];
 let CAROUSEL_ACTIVE = false;
-const TRANSITION_LENGTH = 3    // 3 Seconds
+const TRANSITION_LENGTH = 1    // Seconds
 const TRANSITION_STEPS_PER_SECOND = 10 
-const CAROUSEL_PAUSE = 3
+const TRANSITION_TOTAL_STEPS = TRANSITION_STEPS_PER_SECOND * TRANSITION_LENGTH
+const CAROUSEL_PAUSE = 1
 let IDX_A = 0
 let IDX_B = 1
 
@@ -12,23 +13,31 @@ function next(a,b){
     IDX_A++; if (IDX_A >= LIVE_IMAGES.length) IDX_A = 0;
     IDX_B++; if (IDX_B >= LIVE_IMAGES.length) IDX_B = 0;
     transition = transition_dissolve // This is where we will randomly pick the next transition
+    carousel(transition);
     console.log("Calling carousel in", CAROUSEL_PAUSE * 1000,"ms")
-    setTimeout(carousel, CAROUSEL_PAUSE * 1000, transition)
 }
 
 function transition_dissolve(step, callback){
     console.log("transition_dissolve. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
+    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
 
     if(step===0){
-        // Set up the CSS properties for and b
+        // Set up initial CSS properties for and b
+        console.log("A:", LIVE_IMAGES[IDX_A])
+        imgA.style.zIndex = "0";
+        imgA.style.opacity = "1";
+        imgA.classList.remove("hidden");
+        imgB.style.zIndex = "1";
+        imgB.style.opacity = "0";
+        imgB.classList.remove("hidden");
     }
     
-    // Change the state oftherelevant properties in proportion to where we are
-
-    if (step <= TRANSITION_LENGTH * TRANSITION_STEPS_PER_SECOND){
+    if (step <= TRANSITION_TOTAL_STEPS){
+        imgB.style.opacity = step * ( 1.0 / TRANSITION_TOTAL_STEPS )
         setTimeout(transition_dissolve, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback)
     } else {
-        // Reset the CSS properties for a and b
+        imgA.classList.add("hidden");
+        imgA.style.opacity = "1";
         callback()
     }
 }
@@ -36,7 +45,8 @@ function transition_dissolve(step, callback){
 function carousel(transition){
     console.log( "carousel function running" )
     // Check checkbox here, only progress if checked
-    transition(0, next)
+    setTimeout(transition, CAROUSEL_PAUSE * 1000, 0, next)
+    // transition(0, next)?
 }
 
 
@@ -123,7 +133,7 @@ main();
 
 //     checks for global var const  - if that is false AND the length of the "images" array > 1 = 3    // 3 Seconds
 //       start the carousel bconst y calling the transition function with indexes 0 and 1 and the continue fS_PER_SECOND = 10  const ction_LENGTH
-//       start the carousel bconst y calling the transition function with indexes 0 and 1 and the continue funconst const cti = TRANSITION_LENGTH * TRANSITION_STEPS_PER_SECONDon_LENGTH
+//       start the carousel bconst y calling the transition function with indexes 0 and 1 and the continue funconst const cti = TRANSITION_TOTAL_STEPSon_LENGTH
 
 
 
@@ -139,13 +149,19 @@ main();
 
 //       Assuming that doesn't happen...          
 //       That function animates between the two images and
+// done
+
 //       when it is done itcalls the callback which
-//         resets any css properties it had changed on the "current" image and hides it
+//         resets any css properties it had changed on the "previous" image and hides it
 //           e.g. opacity, z-buffer depth etc
+
 //         resets any css properties it had changed on the "next" image and hides it
+// not a good idea
+
 //         sets "current" to "next"
 //         chooses a new "next", wrapping round as neccesary
 //         sets a setTimout to call itself again
-      
+// done
+
 // Add auto checkbox
 // Add manual controls
