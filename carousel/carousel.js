@@ -1,20 +1,66 @@
-const live_images = [];
+const LIVE_IMAGES = [];
+let CAROUSEL_ACTIVE = false;
+const TRANSITION_LENGTH = 3    // 3 Seconds
+const TRANSITION_STEPS_PER_SECOND = 10 
+const CAROUSEL_PAUSE = 3
+let IDX_A = 0
+let IDX_B = 1
+
+
+function next(a,b){
+    console.log("In next function, choosing new images")
+    IDX_A++; if (IDX_A >= LIVE_IMAGES.length) IDX_A = 0;
+    IDX_B++; if (IDX_B >= LIVE_IMAGES.length) IDX_B = 0;
+    transition = transition_dissolve // This is where we will randomly pick the next transition
+    console.log("Calling carousel in", CAROUSEL_PAUSE * 1000,"ms")
+    setTimeout(carousel, CAROUSEL_PAUSE * 1000, transition)
+}
+
+function transition_dissolve(step, callback){
+    console.log("transition_dissolve. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
+
+    if(step===0){
+        // Set up the CSS properties for and b
+    }
+    
+    // Change the state oftherelevant properties in proportion to where we are
+
+    if (step <= TRANSITION_LENGTH * TRANSITION_STEPS_PER_SECOND){
+        setTimeout(transition_dissolve, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback)
+    } else {
+        // Reset the CSS properties for a and b
+        callback()
+    }
+}
+
+function carousel(transition){
+    console.log( "carousel function running" )
+    // Check checkbox here, only progress if checked
+    transition(0, next)
+}
+
 
 function imageLoadHandler( event ){
     console.log("Image load handler triggerd", event);
     this.classList.add("carousel_image");
     this.classList.add("hidden");
-    live_images.push( this ); // not sure we even really need this array, TODO
+    LIVE_IMAGES.push( this ); // not sure we even really need this array, TODO
 
     let parent = document.getElementById("carousel");
     parent.appendChild( this );
 
-    if(live_images.length === 1){
+    if(LIVE_IMAGES.length === 1){
          console.log("Only one image, display it.");
          this.classList.toggle("hidden");
     }
-    if(live_images.length > 1){ console.log("More than one image, start the carousel if not started already")}
-    console.log(live_images);
+    if(LIVE_IMAGES.length > 1){
+        console.log("More than one image, start the carousel if not started already")
+        if (!CAROUSEL_ACTIVE){
+            CAROUSEL_ACTIVE = true;
+            carousel(transition_dissolve)
+        }
+    }
+    // console.log(LIVE_IMAGES);
 }
 
 function handleImageList( requestResult ) {
@@ -75,13 +121,22 @@ main();
 // done
 
 
-//     checks for global var CAROUSEL_STARTED - if that is false AND the length of the "images" array > 1
-//       start the carousel by calling the transition function with indexes 0 and 1 and the continue function
-// Carousel started  
+//     checks for global var const  - if that is false AND the length of the "images" array > 1 = 3    // 3 Seconds
+//       start the carousel bconst y calling the transition function with indexes 0 and 1 and the continue fS_PER_SECOND = 10  const ction_LENGTH
+//       start the carousel bconst y calling the transition function with indexes 0 and 1 and the continue funconst const cti = TRANSITION_LENGTH * TRANSITION_STEPS_PER_SECONDon_LENGTH
+
+
+
+
+// Carousel
 //   At any given time there is a current and a next image index
 //   So... upon loading OR upon the automatic box becoming ticked...
 //     a transition function that takes the image indexes and a continue callback is called
+// done
+
 //       Firstly the function checks the state of the automate button and if it is unticked it returns
+// Not yet, but placeholder put in place
+
 //       Assuming that doesn't happen...          
 //       That function animates between the two images and
 //       when it is done itcalls the callback which
