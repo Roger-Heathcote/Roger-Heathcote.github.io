@@ -33,6 +33,12 @@ body div section{
     width: var(--img-size);
     height: var(--img-size);
 }
+#carousel_container{
+  position: relative;
+  overflow: hidden;
+  width: var(--img-size);
+  height: var(--img-size);
+}
 .carousel_image{
     position: absolute;
     max-width: var(--img-size);
