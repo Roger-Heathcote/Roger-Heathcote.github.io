@@ -4,7 +4,7 @@
     border: 0;
     vertical-align: baseline;
     box-sizing: border-box;
-    color: #EEE;
+    /* color: #EEE; */
   }
 body {
     /* background-color: #333 */
@@ -35,9 +35,31 @@ body div section{
 }
 #carousel_container{
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: var(--img-size);
   height: var(--img-size);
+  /* color: #000; */
+}
+#carousel_background{
+    position: absolute;
+    background: url("carousel/loading.gif") no-repeat center top/cover;
+    width: var(--img-size);
+    height: var(--img-size);
+    /* z-index: -1; */
+}
+#carousel_foreground{
+    position: absolute;
+    width: var(--img-size);
+    height: var(--img-size);
+    /* background-color: #F00; */
+    /* z-index: 1; */
+}
+#carousel_overlay{
+    position: absolute;
+    width: var(--img-size);
+    height: var(--img-size);
+    /* background-color: #F00; */
+    /* z-index: 2; */
 }
 .carousel_image{
     position: absolute;

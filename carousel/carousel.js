@@ -158,10 +158,7 @@ function transition_spinOut(step, callback){
 
 
 function carousel(transition){
-    //console.log( "carousel function running" )
-    // Check checkbox here, only progress if checked
     setTimeout(transition, CAROUSEL_PAUSE * 1000, 0, next)
-    // transition(0, next)?
 }
 
 
@@ -172,7 +169,7 @@ function imageLoadHandler( event ){
     LIVE_IMAGES.push( this ); // not sure we even really need this array, TODO
 
     let parent = document.getElementById("carousel");
-    parent.appendChild( this );
+    //parent.appendChild( this );
 
     if(LIVE_IMAGES.length === 1){
          //console.log("Only one image, display it.");
@@ -182,7 +179,7 @@ function imageLoadHandler( event ){
         //console.log("More than one image, start the carousel if not started already")
         if (!CAROUSEL_ACTIVE){
             CAROUSEL_ACTIVE = true;
-            carousel( randomTransition() )
+            // carousel( randomTransition() )
         }
     }
     // //console.log(LIVE_IMAGES);
@@ -224,6 +221,8 @@ main();
 // TODO
 // Next steps - correct two main problems
 // Refactor to uses divs & background-image instead of image tags
+//   Still want to be ableto smoothly animate between two images so
+//   Use two divs on top of each other, one with a higher z buffer
 // Refactor to use CSS animations
 // Add auto checkbox
 // Add manual controls
