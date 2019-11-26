@@ -60,7 +60,7 @@ body div section{
     #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; }
     * { --img-size: 25vw; }
  }
-@media (max-width: 1280px) { 
+@media (max-width: 1280px) {
     #flexbox_frame{ grid-template-columns: 1fr 1fr; }
     * { --img-size: 50vw; }
 }
