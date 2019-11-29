@@ -4,20 +4,17 @@
     border: 0;
     vertical-align: baseline;
     box-sizing: border-box;
-    /* color: #EEE; */
+    color: #EEE;
+    --TRANSITION_LENGTH: 2s;
   }
 body {
-    /* background-color: #333 */
-    background: linear-gradient(35deg, rgb(47, 73, 73), rgb(15, 19, 77));
+    background-color: #333;
 }
 ul{
     list-style-type: none;
 }
 #title{
     padding-left: 0.5rem;
-}
-body div section{
-    /* background-color: #999; */
 }
 #flexbox_frame{
     display: grid;
@@ -26,40 +23,20 @@ body div section{
 .info_box{
     padding: 0.5em;
 }
-#loading_animation{
-    width: 100%;
-}
-#carousel{
-    width: var(--img-size);
-    height: var(--img-size);
-}
 #carousel_container{
-  position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   width: var(--img-size);
   height: var(--img-size);
-  /* color: #000; */
 }
-#carousel_background{
-    position: absolute;
-    background: url("carousel/loading.gif") no-repeat center top/cover;
+#place_holder{
     width: var(--img-size);
     height: var(--img-size);
-    /* z-index: -1; */
-}
-#carousel_foreground{
-    position: absolute;
-    width: var(--img-size);
-    height: var(--img-size);
-    /* background-color: #F00; */
-    /* z-index: 1; */
 }
 #carousel_overlay{
     position: absolute;
-    width: var(--img-size);
-    height: var(--img-size);
-    /* background-color: #F00; */
-    /* z-index: 2; */
+    font-size: 3vw;
+    background-size: cover;
+    z-index:2;
 }
 .carousel_image{
     position: absolute;
@@ -68,16 +45,13 @@ body div section{
     width: var(--img-size);
     height: var(--img-size);
     object-fit: cover;
+    background-position: center;
+    background-size: cover;
 }
-.hidden{
-    visibility: hidden;
+#active{
+    transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
+    z-index: 1;
 }
-#body_text {
-    /* background-color: hsl(45,75%,80%); */
-    color: #111;
-    height: 100%;
-}
-
 @media (min-width: 1281px) {
     #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; }
     * { --img-size: 25vw; }

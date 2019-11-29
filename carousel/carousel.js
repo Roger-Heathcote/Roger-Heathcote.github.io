@@ -1,11 +1,14 @@
-const LIVE_IMAGES = [];
 let CAROUSEL_ACTIVE = false;
-const TRANSITION_LENGTH = 1    // Seconds
-const TRANSITION_STEPS_PER_SECOND = 10 
-const TRANSITION_TOTAL_STEPS = TRANSITION_STEPS_PER_SECOND * TRANSITION_LENGTH
-const CAROUSEL_PAUSE = 1
-let IDX_A = 0
-let IDX_B = 1
+
+// TODO
+// I don't like that TRANSITION_LENGTH is in a different place from this
+// setting. Investigate if there is a nice way to define it here, next to
+// pause length, orina a config file, instead of in index.css.
+const CAROUSEL_PAUSE_LENGTH = 5;
+
+const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
+const CAROUSEL_IMAGES = document.getElementById("carousel_images");
+let FIRST_ELEMENT = null;
 const TRANSITIONS = [
     transition_dissolve,
     transition_wipeDown,
@@ -13,216 +16,151 @@ const TRANSITIONS = [
     transition_wipeRight,
     transition_spinOut
 ];
-// const TRANSITIONS = [ transition_spinOut ];
 
-function randomTransition(){
+function carousel(){
     let index = Math.floor( Math.random() * TRANSITIONS.length )
-    console.log( "TRANSITION:", index, TRANSITIONS[index] )
-    return TRANSITIONS[ index ];
-}
-
-function next(a,b){
-    //console.log("In next function, choosing new images")
-    IDX_A++; if (IDX_A >= LIVE_IMAGES.length) IDX_A = 0;
-    IDX_B++; if (IDX_B >= LIVE_IMAGES.length) IDX_B = 0;
-    carousel( randomTransition() );
-    //console.log("Calling carousel in", CAROUSEL_PAUSE * 1000,"ms")
-}
-
-function transition_dissolve(step, callback){
-    //console.log("transition_dissolve. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
-    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
-
-    if(step===0){
-        // Set up initial CSS properties for and b
-        //console.log("A:", LIVE_IMAGES[IDX_A])
-        imgA.style.zIndex = "0";
-        imgA.style.opacity = "1";
-        imgA.classList.remove("hidden");
-        imgB.style.zIndex = "1";
-        imgB.style.opacity = "0";
-        imgB.classList.remove("hidden");
-    }
-    
-    if (step <= TRANSITION_TOTAL_STEPS){
-        imgB.style.opacity = step * ( 1.0 / TRANSITION_TOTAL_STEPS )
-        setTimeout(transition_dissolve, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback)
-    } else {
-        imgA.classList.add("hidden");
-        imgA.style.opacity = "1";
-        callback()
-    }
-}
-
-function transition_wipeDown(step, callback, savedOffset=0){
-    //console.log("transition_wipeDown. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
-    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
-    if(step===0){
-        // Set up initial CSS properties for and b
-        savedOffset = imgB.offsetTop;
-        imgA.style.zIndex = "0";
-        imgA.classList.remove("hidden");
-        imgB.style.zIndex = "1";
-        imgB.style.opacity = "1";
-        imgB.style.top =  (-imgB.height).toString() + "px";
-        imgB.classList.remove("hidden");
-    }
-    if (step <= TRANSITION_TOTAL_STEPS){
-        let offset = -imgB.height + (step * (imgB.height / TRANSITION_TOTAL_STEPS))
-        imgB.style.top = offset.toString() + "px"
-        setTimeout(transition_wipeDown, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback, savedOffset)
-    } else {
-        imgA.classList.add("hidden");
-        imgB.style.top = "45px";
-        callback()
-    }
-}
-
-function transition_wipeLeft(step, callback, savedOffset=0){
-    //console.log("transition_wipeLeft. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
-    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
-    if(step===0){
-        // Set up initial CSS properties for and b
-        savedOffset = imgB.offsetLeft;
-        imgA.style.zIndex = "0";
-        imgA.classList.remove("hidden");
-        imgB.style.zIndex = "1";
-        imgB.style.opacity = "1";
-        imgB.style.left =  (-imgB.width).toString() + "px";
-        imgB.classList.remove("hidden");
-    }
-    if (step <= TRANSITION_TOTAL_STEPS){
-        let offset = -imgB.width + (step * (imgB.width / TRANSITION_TOTAL_STEPS))
-        imgB.style.left = offset.toString() + "px"
-        setTimeout(transition_wipeLeft, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback, savedOffset)
-    } else {
-        imgA.classList.add("hidden");
-        imgB.style.left = savedOffset;
-        callback()
-    }
-}
-
-function transition_wipeRight(step, callback, savedOffset=0){
-    //console.log("transition_wipeRight. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
-    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
-    if(step===0){
-        // Set up initial CSS properties for and b
-        savedOffset = imgB.offsetLeft;
-        imgA.style.zIndex = "0";
-        imgA.classList.remove("hidden");
-        imgB.style.zIndex = "1";
-        imgB.style.opacity = "1";
-        imgB.style.right =  (imgB.width*2).toString() + "px";
-        imgB.classList.remove("hidden");
-    }
-    if (step <= TRANSITION_TOTAL_STEPS){
-        let offset = imgB.width - (step * (imgB.width / TRANSITION_TOTAL_STEPS))
-        imgB.style.left = offset.toString() + "px"
-        setTimeout(transition_wipeRight, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback, savedOffset)
-    } else {
-        imgA.classList.add("hidden");
-        imgB.style.left = savedOffset;
-        callback()
-    }
-}
-
-function transition_spinOut(step, callback){
-    //console.log("transition_spinOut. Step", step,"Index A:",IDX_A,"Index B:",IDX_B)
-    let imgA = LIVE_IMAGES[IDX_A], imgB = LIVE_IMAGES[IDX_B]
-    if(step===0){
-        // Set up initial CSS properties for and b
-        imgA.style.zIndex = "0";
-        imgA.classList.remove("hidden");
-        imgB.style.zIndex = "1";
-        imgB.style.opacity = "1";
-        // imgB.style.transform = "rotate(360deg)";
-        imgB.style.scale = "scale(0.0)";
-        imgB.classList.remove("hidden");
-    }
-    if (step <= TRANSITION_TOTAL_STEPS){
-        let rotation = 360 - (step * (360 / TRANSITION_TOTAL_STEPS))
-        let scale = (step * (1.0 / TRANSITION_TOTAL_STEPS))
-        //console.log("Rotation:", rotation);
-        //console.log( "rotate(" + rotation.toString() + "deg)" );
-        // imgB.style.transform = "rotate(" + rotation.toString() + "deg)";
-        // imgB.style.transform = "scale(" + scale.toString() + ")";
-        imgB.style.transform = "scale(" + scale.toString() + ") " + "rotate(" + rotation.toString() + "deg)";
-        setTimeout(transition_spinOut, 1000 / TRANSITION_STEPS_PER_SECOND, step+1, callback)
-    } else {
-        imgA.classList.add("hidden");
-        imgB.style.transform = "rotate(0deg)";
-        imgB.style.transform = "scale(1)";
-        callback()
-    }
-}
+    TRANSITIONS[ index ]();
+ }
 
 
-function carousel(transition){
-    setTimeout(transition, CAROUSEL_PAUSE * 1000, 0, next)
-}
-
-
-function imageLoadHandler( event ){
-    //console.log("Image load handler triggerd", event);
-    this.classList.add("carousel_image");
-    this.classList.add("hidden");
-    LIVE_IMAGES.push( this ); // not sure we even really need this array, TODO
-
-    let parent = document.getElementById("carousel");
-    //parent.appendChild( this );
-
-    if(LIVE_IMAGES.length === 1){
-         //console.log("Only one image, display it.");
-         this.classList.toggle("hidden");
-    }
-    if(LIVE_IMAGES.length > 1){
-        //console.log("More than one image, start the carousel if not started already")
+// Called with the name of the imagefile once it has been downloaded and is
+// present in the cache. For each image a div is created and the image set
+// as it's background. The div is then inserted into another div within the
+// carousel.
+// Question: This list of images isn't presented to the end user as a list
+// but might it be worth representing it as a list internally for the sake
+// implementers / maintainers?
+// Also this function checks if more than 
+function imageLoadHandler( value ){
+    // console.log( "Image load handler received:", value );
+    let newDiv = document.createElement("div");
+    newDiv.style.opacity = 0;
+    newDiv.classList.add("carousel_image");
+    newDiv.style.backgroundImage = "url(\"carousel/images/"+ value +"\")";
+    CAROUSEL_IMAGES.appendChild( newDiv );
+    let images = document.getElementsByClassName("carousel_image");
+    if(images.length > 1){
+        // console.log("More than one image, start the carousel if not started already");
         if (!CAROUSEL_ACTIVE){
             CAROUSEL_ACTIVE = true;
-            // carousel( randomTransition() )
+            FIRST_ELEMENT = images[0];
+            FIRST_ELEMENT.setAttribute("id", "active");;
+            carousel();
         }
     }
-    // //console.log(LIVE_IMAGES);
 }
 
 function handleImageList( requestResult ) {
-    //console.log( "handleImageList got:", requestResult.target.response);
+    // This function reads the contents of the request for images.txt
+    // It tests each line against a regex to ensure that it looks like
+    // an image file name and, if it does, it trys to download it into an
+    // image object. If it succeeds the function imageLoadHandler is called
+    // with that object. If not an error message is logged to the console.
     const fileNames = requestResult.target.response.split("\n");
     fileNames.forEach( (value)=>{
         if( /(?=^(\S|\ )+$)[^?\=\b]+\.(jpg|jpeg|png|gif)$/i.test(value) ){
-              //console.log("value:", value);
-              let image = new Image();
-              image.addEventListener("load", imageLoadHandler)
-              image.addEventListener("error", e=>console.log("ERROR LOADING IMAGE:", e) )
-              image.src = "/carousel/images/" + value;
-          }
+            //console.log("value:", value);
+            let image = new Image();
+            image.addEventListener("load", (e)=>{imageLoadHandler(value)});
+            image.addEventListener("error", e=>console.log("ERROR LOADING IMAGE:", e) );
+            image.src = "/carousel/images/" + value;
+        }
     });
 }
 
 function main(){
-    console.log("Hi, carousel checking in.");
-    
+    // The images to use in the carousel are specified in the file images.txt
+    // rather than hard coded so non-coders can customise it.
+    // This function makes those requests and specifies the function to
+    // call once the txt file arrives, or fail to arrive
     const getImageList = (triesRemaining=3) => {
         const oReq = new XMLHttpRequest();
         oReq.addEventListener("load", handleImageList);
         oReq.addEventListener("error", ()=>{
+            console.log("Problem downloading image.txt, retrying...")
             if (triesRemaining > 0) handleImageList(tries-1);
+            console.log("Failed to download images.txt")
         });
         oReq.open("GET", "/carousel/images.txt");
         oReq.send();
     }
     getImageList();
-
-    console.log("Okay main is done now.")
 }
 
 main();
 
 // TODO
-// Next steps - correct two main problems
-// Refactor to uses divs & background-image instead of image tags
-//   Still want to be ableto smoothly animate between two images so
-//   Use two divs on top of each other, one with a higher z buffer
-// Refactor to use CSS animations
 // Add auto checkbox
 // Add manual controls
+
+
+// TRANSITIONS
+// TRANSITIONS
+// TRANSITIONS
+
+// This function is called just before the next transition
+// It makes the previous background image invisible using opacity: 0
+// It removes the active class from what is to become the bg image
+// It adds the active class to whatis to become the next fg img
+function transition_next(){
+    let lastElement = document.getElementById("carousel_images").lastElementChild;
+    let current_node = document.getElementById("active");
+    let next_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
+    let prev_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
+    current_node.removeAttribute("id");
+    prev_node.style.opacity = 0.0;
+    prev_node.style.zindex = 0.0;
+    next_node.setAttribute("id", "active");
+    carousel();
+}
+
+// This function implements the delay between images.
+// It is called by transition functions when they have finished
+function transition_finished(){
+    // console.log("In transition_finished, cueing up next transition_next in", CAROUSEL_PAUSE_LENGTH * 1000, "seconds.")
+    setTimeout(transition_next, CAROUSEL_PAUSE_LENGTH * 1000)
+}
+
+// Keep for transition debugging purposes...
+// document.addEventListener("animationend", transition_log, false);
+// document.addEventListener("transitionrun", transition_log, false);
+// document.addEventListener("transitionend", transition_log, false);
+// document.addEventListener("transitioncancel", transition_log, false);
+// function transition_log(e){
+//     console.log("TRANSLOG:", e.type, e.propertyName, e.target.style.backgroundImage);
+// }
+
+function transition_dissolve(){
+    console.log( "Inside dissolve transition.");
+    current_node = document.getElementById("active");
+    current_node.style.opacity = 1;
+    transition_finished();
+}
+
+function transition_wipeDown(){
+    console.log( "Inside wipeDown transition.");
+    current_node = document.getElementById("active");
+    current_node.style.opacity = 1;
+    transition_finished();
+}
+
+function transition_wipeLeft(){
+    console.log( "Inside wipeLeft transition.");
+    current_node = document.getElementById("active");
+    current_node.style.opacity = 1;
+    transition_finished();
+}
+
+function transition_wipeRight(){
+    console.log( "Inside wipeRight transition.");
+    current_node = document.getElementById("active");
+    current_node.style.opacity = 1;
+    transition_finished();
+}
+
+function transition_spinOut(){
+    console.log( "Inside spinOut transition.");
+    current_node = document.getElementById("active");
+    current_node.style.opacity = 1;
+    transition_finished();
+}
