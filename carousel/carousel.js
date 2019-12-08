@@ -51,11 +51,11 @@ function imageLoadHandler( value ){
 }
 
 function handleImageList( requestResult ) {
-    // This function reads the contents of the request for images.txt
-    // It tests each line against a regex to ensure that it looks like
-    // an image file name and, if it does, it trys to download it into an
-    // image object. If it succeeds the function imageLoadHandler is called
-    // with that object. If not an error message is logged to the console.
+    // This function reads images.txt and tests each line against a regex
+    // to ensure that it looks like an image file name and, if it does, it
+    // trys to download it into an image object. If it succeeds the function
+    // imageLoadHandler is called with that object. If not an error message
+    // is logged to the console.
     const fileNames = requestResult.target.response.split("\n");
     fileNames.forEach( (value)=>{
         if( /(?=^(\S|\ )+$)[^?\=\b]+\.(jpg|jpeg|png|gif)$/i.test(value) ){
