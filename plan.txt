@@ -104,11 +104,21 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
   TODO
   TODO
-    Wire up back and forward buttons
-    Wire up left/right arrow keys
-      Q: Should the use of these disable the automatic progression?
-      A: Yes, if you're deliberately selecting something you don't want it spontaneously changing
-    Wire up automatic checkbox
+    MANUAL NAVIGATION
+      Q: Do we want to disable transitions altogether when manually navigating?
+      A: Yes
+      Q: Should the use of manual nav disable the automatic progression?
+      A: Yes, if you're deliberately selecting something you don't want it  spontaneously changing. Left/Right handlers should both untick automatic box.
+
+      Wire up back and forward buttons
+        Add eventListener to each button, eat events
+        Point to goLeft and goRight function respectively
+      Wire up left/right arrow keys
+        AddeventListener to window, eat events
+        Point to goLeft and goRight function respectively
+      Wire up automatic checkbox
+        If off when clicked start carousel
+        If on whenclicked stop carousel
 
     Write another transition or two
     
@@ -117,8 +127,6 @@ Include an image carousel (the image carousel must be built into your website, a
       Re-evaluate if square layout is still appropriateand change if not
     Choose nice background colors for each section
     
-    Re-enable loading placeholder animation
-
     Get icons for: FCC, GitHub, Codewars
       Downloaded icons
       Incorporate icons
@@ -139,3 +147,4 @@ Include an image carousel (the image carousel must be built into your website, a
       done. Make visible on hover for mouse users
       done. Make visible by clicking for touchscreens
         Turns out that's how it works by default anyway :)
+    Re-enable loading placeholder animation
