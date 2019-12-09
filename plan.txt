@@ -7,43 +7,45 @@ Demonstrate your learning from the prerequisites
 Tell us about why you are applying for the programme
 
   Personal reasons
-    I can't stop coding. I have tried over the years and have met with some success but it has always been short lived.
-    At 16 I caught the programming bug at college and became somewhat obsessed.
-    At 18 I enrolled on a Software Engineering degree to pursue my new passion.
-    By 21 I had dropped out. I didn't like the town, or my classmates or the course. I was bitterly disappointed.
-    I vowed to never work as a programmer or a software engineer.
-    I stopped programming and enrolled on a multimedia course, which I enjoyed much more.
-    After that I worked in IT support for a few years then set up shop as an IT support & repair guy.
-    All was, more or less, well for the next 15 years.
-    However I kept finding excuses to do a bit of coding here and there.
-    With hindsight those excuses were just flimsy pretexts.
-    After decades of self denial I had an epihany a few years back and got religion.
-    I started reading books on best practices and agile methodologies*.
-    Since then I have had to face some stark truths...
-      I love coding at a fundamental level and I must do it, and do it often, to remain sane.
-      I have been a terrible cowboy coder in the past. Now I want to become a real professional.
-      Coding takes a lot of time, coding well takes even more, and I don't really have that kind of spare time.
-      Coding alone is limiting and lonely, I want people to use what I write and I want to work on non trivial projects.
-      I have worked alone for 20 years with no colleagues or peers to talk to and learn from.
-      At the same time I am itching to try things like agile development and pair programming that I have read about.
-      This means team work but I have no experience of working on a team.
-      The only way I can spend as much time coding as I want to is for it to become my profession.
 
-  * The Art of Agile Development - James Shore & Shane Warden
-    Test driven development - Kent Beck
-    The mythical man month - Fred Brooks
-    Clean Code - Robert C Martin
+    I really love programming and I have done for some time but she and I have a chequered past.
+
+    I discovered programming at college in 1992 and quickly became obsessed, spending many of my lunchtimes and free periods writing games. At 18, full of enthusiasm, I enrolled on a Software Engineering BSc but by 20 I had dropped out. The course was not what I expected and what little programming we got to do was in obscure academic languages for which I couldn't even afford to buy a license. Ironically I think I would really enjoy it now but at the time it wasn't at all what I had wanted. Worse than that was the atmosphere surrounding my class and what I could see of the industry. My class of forty only had three women, two of whom left by the second year. The third was the only person of color in the whole year. Coming from a very mixed, liberal 6th form college it was quite a culture shock. One of the things I had been most excited about at the offset was finally having some people I could talk to about my new interests but sadly my classmates, as people, were far more insular than I was used to. Most seemed to prefer to spend all their spare time alone with their computers. There also seemed to be a very unhealthy, somewhat macho, working culture in the industry at the time. People would try out do each other by pulling all nighters, living off coke and pizza for weeks at a time, using "clever" hacks as often as possible to demonstrate their prowess (and make sure nobody else could touch "their" code). Frankly it was a bit of a mess and looking forward I just couldn't see myself spending decades of my life in the company of those people. I left, bitterly disappointed, and I vowed to never work as a programmer or a software engineer.
+
+    Fast forward twenty years. I had spent the last two decades in IT support, a few years for agencies, a few for the NHS and then the rest in business for myself as a roving support & repair guy. During that time I had fallen in with several causes and campaign groups like the Stop the War Coallition, Peace Not War, Indymedia and other, less well defined, collectives running various shared spaces, squatted social centers, workshops and and other broadly political events across London. A lot of my free time in that first decade in London was spent helping out with the technical needs of these groups, recycling and fixing up old hardware to make working networks for them, producing streaming radio shows, carting around projectors and setting up sound systems for events etc. At the time I was the only technician in my part of town who offered significant discounts for non-profits and the unwaged which brought me into contact with a lot of small local charities like The Feminist Library and Hackney Winter Night Shelter. What became apparent to me during this time was that hardware was the least significant part of their IT struggle. A lot of places couldn't find software that met their needs for a price they could afford, most of all the smaller charites and volunteer run places. Everyone wanted a website and a database and a mailing list, but most of them could not afford to pay the license fees for the software or the rates people were charging for setting them up. A lot of time was being wasted by organisations trying to force their domain's data to into the software they had, invariably MS Office, and a lot effort was being spent on repetetive manual work that, with the right software, could have been automated. Happily though, the same time saw the growth of some impressive open software projects that left their mark on me. In particular services like riseup.net and the TOR network, desktop software like open (and subsequently libre) office, and the first wave of open source CMS such as Drupal and Joomla. I was, and still am, awed by the people who made that software and impressed by the disproportionately large benefit a small group of dedicated people can provide by making software.
+
+    During all that time I kept finding excuses to do little bits of programming. With hindsight those excuses were just flimsy pretexts. A lot of my customers had websites or databases that needed updating, or ancient systems they needed data migrating from, so I began to dabble in Python and PHP and SQL. Looking back I was clearly hooked again as soon as I started but being self employed I just didn't have time to do anything very well, I would crowbar bits and bobs in when I could justify the time. What I created was neccesarily a bit slapdash but nonetheless my wife noted that I rarely seemed so happy as when I found an excuse to fall into a "coding hole" for a while.
+
+    When my wife returned to work following the birth of our second child, I wound up my business to become a full time father for a few years - until both my kids were at school full time. At that point I was still in denial about wanting to be a career programmer but a couple of years in, once the delerium of sleep deprivation had begun to subside, I had an epihany. For years I have read a lot of computer history and I had seen The Mythical Man Month by Fred Brooks mentioned in passing several times. Eventually curiosity got the better of me and I got a copy. It immediately struck a chord with me and seemed to explain a lot about the mess software was in in the 90s when I'd first considered it as a career. From that point the retailers various recommendation engines kicked in and steered me into the writings of Martin Fowler, Kent Beck, Bob Martin et al. From there it wasn't long til I really got religion.
+
+    It seemed in the years since I had first flirted with programming industry it had taken some big steps to address some of it's earlier failings. The best practoices and agile methodologies I read about were a real breath of fresh air, and stunningly obvious in retrospect. Ditching the lumbering waterfall model for quick itterations, involving the customer throughout the project, using user stories as specs - it was like a light coming on. In particular I found the notion of pair programming really exciting. My single best memory from the course I was on 20 years ago was a group project where I ended up pairing with somebody from another group - only because there weren't enough computers and our partners weren't about. We had meant to just get a start on the project then hive off back to our own groups and flesh things out but it was such fun, and so productive so we almost finished the whole project in one session. We then both nearly got kicked off the course for plagiarism as our codebases were so similar!
+    
+    So anyway, I was extremely excited by all the stuff I had been reading but of course it also forced me to face some stark truths...
+      I love coding at a fundamental level and I must do it, and do it often, to remain sane.
+      I have been a terrible cowboy coder in the past. Now I must knuckle down, apply best practices and become a real professional.
+      Coding takes a lot of time, coding well takes even more, and I don't really have that kind of spare time outside of my day to day commitments.
+      The only way I will be able to spend as much time coding as I want to is for it to become my full time profession.
+      I have coded alone for 20 years with no colleagues or peers to talk to and learn from.
+      Coding alone is rather limiting and lonely. I want people to use what I write and I want to work on non trivial projects that actually help people.
+      Much as I love programming for it's own sake I would much prefer to work for an organisation with a social purpose, or at least conscience, and not just a generic consultancy or fintech firm.
+      At the same time I am itching to try things like agile development and pair programming that I have read about.
+      By definition this means team work but I have almost no experience of working on a team yet.  The Founders and Coders sessions I have attended so far have strengthened me in the opinion that working closely with others is what I crave and what would benefit me the most right now.
 
   The course itself
 
-    I have been thinking about boot camps for a while but adding the expense of tens of thousands in fees on top of
-    the extra childcare costs and the opportunity cost of not working for several months made them seem rather unattainable.
-    I was explaining all this to a friend of mine who is a co-op evangilist and he told me about Founders and Coders.
-    I immediately got very excited.
-    Everything about the organisation and it's ethos seems perfect to me.
-    The peer led, paying it forward model is fantastic. It is how we should all work together and help each other learn.
-    The focus on increasing representation for people who might not fit the traditional junior programmer mold is really positive (and, for me, germane.)?
-    The roster of companies who hire from the program include a heartening number of social enterprises and progressive businesses, the kind of places I want to work.
+    My friend and long time co-op evanglist put me on to Founders and Coders. I was telling him how I would love to do a boot camp and how they were replacing CS degrees as the main route into the programming industry, but the many thousands in fees on top of the extra childcare costs and the opportunity cost of not working made it seem like a rather distant daydream. So obviously when he explained Founders and Coders to me I immediately got very excited. Everything he told me about the organisation and it's ethos resonated with me and I resolved then to apply.
+    
+    The peer led, paying it forward model makes a ton of sense. Its a great model for how people should work together and help each other learn. It's a way of thinking that I would love to see grow and flourish and not just in the world of IT, especially as the costs of tertiary education are now so prohibitive.
+    
+    I think the focus on increasing representation for people who don't neccessarily fit the "traditional" junior programmer mold is really positive, especially as someone who isn't nearly as junior as your average junior. The painfully skewed demographics in the programming industry were one of the things that pushed me away from it many years ago. 
+    
+    I love the focus on pairing as well, it is something I have wanted to try ever since I heard about it and the Monday and Tuesday F&C sessions have been a great opportunity to try it out. Happily I like it as much as I hoped I would and I've learned something worth knowing from every session I have taken part in.
+
+    The roster of companies who hire from the program include a really encouraging number of social enterprises and progressive businesses. These are the kind of places I want to work. I'd be particularly keen to work for an organisation that benefits education, the environment or high quality journalism but as long as it benefits humanity more than it harms it then I'm keen.
+    
+    Overall I can't imagine a course that is a better fit for me than Founders and Coders, regardless of cost. The crowd it seems to attract are the kind of people I would seek out anyway. I don't think it's that big a coincidence that just before the second F&C meetup I attended I bumped into one of my old charity clients from back in the day. We got to chatting about what I was up to and I told her my youngest had just started school full time and that I was retraining and was on my way to a programming meetup. "Ooh is it Founders and Coders?" she replied, "we,'ve just come from there - they made us an app!".
+
+
 
 Contain a link back to the GitHub repo that contains the code for your site
 
@@ -105,11 +107,18 @@ Include an image carousel (the image carousel must be built into your website, a
     Wire up back and forward buttons
     Wire up left/right arrow keys
       Q: Should the use of these disable the automatic progression?
+      A: Yes, if you're deliberately selecting something you don't want it spontaneously changing
     Wire up automatic checkbox
     Write another transition or two
     Finalise and insert copy
     Get icons for: FCC, GitHub, Codewars
+      Downloaded icons
+      Incorporate icons
     Test with a screen reader
+      Installed Orca - findings so far
+        Title needs to be more descriptive
+        Might be an idea to add nav links along the top
+          Collapse to burger menue in small screen layout?
     Incorporate my notes on HTML, CSS etc
     Size text nicely for each breakpoint then
       Re-evaluate if square layout is still appropriateand change if not
@@ -119,3 +128,4 @@ Include an image carousel (the image carousel must be built into your website, a
       Make visible on hover for mouse users
       Make visible by clicking for touchscreens
     Q: Add navigation links along top?
+    A: Yes, for the sake of accessibility
