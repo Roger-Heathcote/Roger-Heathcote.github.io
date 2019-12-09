@@ -104,5 +104,8 @@ ul{
 @media (max-width: 700px) {
     #flexbox_frame{ grid-template-columns: 1fr; }
     * { --img-size: 100vw; }
+    .info_box{
+        min-height: initial;
+    }
 }
 
