@@ -29,6 +29,7 @@ ul{
     min-height: var(--img-size);
 }
 #carousel_overlay{
+    opacity: 0;
     width: var(--img-size);
     height: var(--img-size);
     position: absolute;
@@ -36,6 +37,10 @@ ul{
     z-index:2;
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
+}
+#carousel_overlay:Hover{
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
 }
 #OL_top{
     grid-column: 1 / 3;
