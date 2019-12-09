@@ -88,9 +88,15 @@ ul{
     object-fit: cover;
     background-position: center;
     background-size: cover;
+    opacity: 0;
+    z-index: 0;
+}
+.transition_returns{
+    transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
 }
 #active{
-    transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
+    opacity: 1;
+    /* transition: opacity var(--TRANSITION_LENGTH) ease-in-out; */
     z-index: 1;
 }
 @media (min-width: 1281px) {
