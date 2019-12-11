@@ -1,75 +1,84 @@
 let CAROUSEL_ACTIVE = false;
-
-// TODO
-// I don't like that TRANSITION_LENGTH is in a different place from this
-// setting. Investigate if there is a nice way to define it here, next to
-// pause length, orina a config file, instead of in index.css.
-
-
+const TRANSITION_LENGTH_MANUAL = "0.25s"
+const TRANSITION_LENGTH_AUTOMATIC = "2s"
 const CAROUSEL_PAUSE_LENGTH = 5;
 
-const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
-const CAROUSEL_IMAGES = document.getElementById("carousel_images");
 let FIRST_ELEMENT = null;
 const TRANSITIONS = [
-    // transition_dissolve,
+    transition_dissolve,
     // transition_wipeDown,
     // transition_wipeLeft,
     // transition_wipeRight,
-    transition_spinOut
+    // transition_spinOut
 ];
 let PAUSE_TIMER = null;
+let transition_next = transition_end.bind(null, "next");
+let transition_last = transition_end.bind(null, "last");
 
+// STATIC ELEMENTS
+// STATIC ELEMENTS
+// STATIC ELEMENTS
+// const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
+const CAROUSEL_IMAGES = document.getElementById("carousel_images");
+const AUTO_CHECKBOX = document.getElementById("OL_auto_checkbox")
 
-// Event Listners
+// EVENT LISTENERS
+// EVENT LISTENERS
+// EVENT LISTENERS
+AUTO_CHECKBOX.addEventListener("click", autoCheckboxHandler, false);
 document.getElementById("OL_left_button").addEventListener("click", goLeft, false);
 document.getElementById("OL_right_button").addEventListener("click", goRight, false);
-document.getElementById("OL_auto_checkbox").addEventListener("click", autoCheckbox, false);
+document.addEventListener("keydown", keyDownHandler, false);
 
-function carouselOff(){
-    if(PAUSE_TIMER) clearTimeout(PAUSE_TIMER);
-    PAUSE_TIMER = null;
-    document.body.style.setProperty('--TRANSITION_LENGTH', "0.25s");
+// EVENT HANDLERS
+// EVENT HANDLERS
+// EVENT HANDLERS
+function keyDownHandler(e){
+    console.log("IN KEYDOWN HANDLER");
+    if(!e.isComposing){
+        console.log("e.key:", e.key);
+        if(e.key === "ArrowLeft"){ e.preventDefault(); goLeft(); }
+        if(e.key === "ArrowRight"){ e.preventDefault(); goRight(); }
+        if(e.key === "a" || e.key === "A"){
+             toggleAutomaticCheckbox();
+             AUTO_CHECKBOX.checked ? carouselOn() : carouselOff();
+        }
+    }
+}
+function autoCheckboxHandler(e){
+    console.log("Automatic checkbox is:", e.target.checked);
+    e.target.checked ? carouselOn() : carouselOff();
 }
 
-
-function goRight(e){
+// ACTIONS
+// ACTIONS
+// ACTIONS
+function goRight(){
     console.log("GO RIGHT.");
-    untickCarousel();
+    untickAutomaticCheckbox();
     carouselOff();
     transition_cut_forwards();
 }
-
-function goLeft(e){
+function goLeft(){
     console.log("GO LEFT.");
-    untickCarousel();
+    untickAutomaticCheckbox();
     carouselOff();
     transition_cut_backwards();
 }
-
-function autoCheckbox(e){
-    console.log("AUTO CHECKBOX.");
-    if(e.target.checked){
-        console.log("Box has been checked");
-        carousel();
-    } else {
-        console.log("Box has been UN checked");
-        carouselOff();
-    }
+function carouselOff(){
+    console.log("CAROUSEL OFF");
+    if(PAUSE_TIMER) clearTimeout(PAUSE_TIMER);
+    PAUSE_TIMER = null;
+    document.body.style.setProperty('--TRANSITION_LENGTH', TRANSITION_LENGTH_MANUAL);
 }
-
-
-function untickCarousel(){
-    console.log("Stop Carousel called");
-    document.getElementById("OL_auto_checkbox").checked = false;
-};
-
-// Picks a random transition
-function carousel(){
-    document.body.style.setProperty('--TRANSITION_LENGTH', "2s");
+function carouselOn(){
+    console.log("CAROUSEL ON");
+    document.body.style.setProperty('--TRANSITION_LENGTH', TRANSITION_LENGTH_AUTOMATIC);
     let index = Math.floor( Math.random() * TRANSITIONS.length )
     TRANSITIONS[ index ]();
 }
+function untickAutomaticCheckbox(){ AUTO_CHECKBOX.checked = false; };
+function toggleAutomaticCheckbox(){ AUTO_CHECKBOX.checked = !AUTO_CHECKBOX.checked; };
 
 
 // Called with the name of the imagefile once it has been downloaded and is
@@ -94,7 +103,7 @@ function imageLoadHandler( value ){
             CAROUSEL_ACTIVE = true;
             FIRST_ELEMENT = images[0];
             FIRST_ELEMENT.setAttribute("id", "active");;
-            carousel();
+            carouselOn();
         }
     }
 }
@@ -147,40 +156,46 @@ main();
 // TRANSITIONS
 // TRANSITIONS
 
-// This function is called just before the next transition
-// It makes the previous background image invisible using opacity: 0
-// It removes the active class from what is to become the bg image
-// It adds the active class to whatis to become the next fg img
-function transition_next(){
-    let lastElement = document.getElementById("carousel_images").lastElementChild;
+// This function moves the "active" id forwards or backwards
+function transition_end(direction){
+    console.log("TRANSITION_END");
     let current_node = document.getElementById("active");
-    let next_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
-    let prev_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
     current_node.removeAttribute("id");
-    // prev_node.style.opacity = 0.0;
-    // prev_node.style.zindex = 0.0;
+    let lastElement = CAROUSEL_IMAGES.lastElementChild;
+    let next_node;
+    if(direction == "next"){
+        next_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
+    } else {
+        next_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
+    }
     next_node.setAttribute("id", "active");
-    if(document.getElementById("OL_auto_checkbox").checked) carousel();
+    if(AUTO_CHECKBOX.checked) carouselOn();
 }
 
-function transition_last(){
-    let lastElement = document.getElementById("carousel_images").lastElementChild;
-    let current_node = document.getElementById("active");
-    // let next_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
-    // let prev_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
-    let prev_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
-    let next_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
-    current_node.removeAttribute("id");
-    // prev_node.style.opacity = 0.0;
-    // prev_node.style.zindex = 0.0;
-    next_node.setAttribute("id", "active");
-    if(document.getElementById("OL_auto_checkbox").checked) carousel();
-}
+
+// function transition_next(){
+//     let lastElement = document.getElementById("carousel_images").lastElementChild;
+//     let current_node = document.getElementById("active");
+//     let next_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
+//     // let prev_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
+//     current_node.removeAttribute("id");
+//     next_node.setAttribute("id", "active");
+//     if(document.getElementById("OL_auto_checkbox").checked) carouselOn();
+// }
+
+// function transition_last(){
+//     let lastElement = document.getElementById("carousel_images").lastElementChild;
+//     let current_node = document.getElementById("active");
+//     // let prev_node = current_node.nextElementSibling == null ? FIRST_ELEMENT : current_node.nextElementSibling;
+//     let next_node = current_node.previousElementSibling == null ? lastElement : current_node.previousElementSibling;
+//     current_node.removeAttribute("id");
+//     next_node.setAttribute("id", "active");
+//     if(document.getElementById("OL_auto_checkbox").checked) carouselOn();
+// }
 
 // This function implements the delay between images.
 // It is called by transition functions when they have finished
-function transition_finished(){
-    // console.log("In transition_finished, cueing up next transition_next in", CAROUSEL_PAUSE_LENGTH * 1000, "seconds.")
+function pause_then_proceed(){
     PAUSE_TIMER = setTimeout(transition_next, CAROUSEL_PAUSE_LENGTH * 1000);
 }
 
@@ -214,33 +229,33 @@ function transition_dissolve(){
     console.log( "Inside dissolve transition.");
     current_node = document.getElementById("active");
     // current_node.style.opacity = 0;
-    transition_finished();
+    pause_then_proceed();
 }
 
 function transition_wipeDown(){
     console.log( "Inside wipeDown transition.");
     current_node = document.getElementById("active");
     // current_node.style.opacity = 0;
-    transition_finished();
+    pause_then_proceed();
 }
 
 function transition_wipeLeft(){
     console.log( "Inside wipeLeft transition.");
     current_node = document.getElementById("active");
     // current_node.style.opacity = 0;
-    transition_finished();
+    pause_then_proceed();
 }
 
 function transition_wipeRight(){
     console.log( "Inside wipeRight transition.");
     current_node = document.getElementById("active");
     // current_node.style.opacity = 0;
-    transition_finished();
+    pause_then_proceed();
 }
 
 function transition_spinOut(){
     console.log( "Inside spinOut transition.");
     current_node = document.getElementById("active");
-    // current_node.style.opacity = 0;
-    transition_finished();
+    current_node.style.transform = "rotate(360deg)";
+    pause_then_proceed();
 }

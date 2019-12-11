@@ -4,29 +4,81 @@
     border: 0;
     vertical-align: baseline;
     box-sizing: border-box;
-    color: #EEE;
 }
+/* background: linear-gradient(90deg, , #444444); */
+/* background: linear-gradient(90deg, #BBBB22, #FFFF99); */
 body {
     --TRANSITION_LENGTH: 2s;
+    --LGA-start: #222222;
+    --LGA-end: #444444;
+    --LGB-start: #BBBB22;
+    --LGB-end: #FFFF99;
+    color: #EEE;
     background-color: #333;
     font-size: 62.5%;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    /* text-align: justify; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width:1500px;
+    background: #333;
 }
-ul{
+h1{
+    font-size: 2rem;
+    /* font-weight: lighter; */
+    padding: 1rem;
+}
+main {
+    background: #444;
+}
+section{
+    background: linear-gradient(90deg, var(--LGA-start), var(--LGA-end));
+}
+#stark_truths, header, #learning{
+    color: #111;
+    background: linear-gradient(90deg, var(--LGB-start), var(--LGB-end));
+}
+#carousel_automatic label{
+    height: 50%;
+    background: #F00;
+    padding: 0px;
+    margin: 0px;
+}
+#OL_auto_checkbox{
+    height: 100%;
+    /* width: 5vw; TODO - WTF!*/
+}
+li{
     list-style-type: none;
+}
+p{
+    padding-bottom: 1rem;
+    padding: 0.5em;
 }
 #title{
     padding-left: 0.5rem;
 }
 #flexbox_frame{
-    display: grid;
-    grid-template-columns: 50% 50%;
+    /* display: grid; */
+    /* grid-template-columns: 50% 50%; */
 }
+#truth_bullets li{
+    list-style-type: circle;
+    list-style-position: inside;
+    text-indent: -1em;
+    padding-left: 2em;
+    padding-bottom: 0.5rem;
+}
+
 .info_box{
-    padding: 0.5em;
-    min-height: var(--img-size);
+    font-size: 1.1rem;
 }
 #carousel{
     min-height: var(--img-size);
+    min-width: var(--img-size);
+    float: left;
+    margin-right: 1rem;
 }
 #carousel_overlay{
     opacity: 0;
@@ -92,7 +144,11 @@ ul{
     z-index: 0;
 }
 .transition_returns{
-    transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
+    /* transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
+    transition: transform  ease-in-out; */
+    transition-property: opacity, transform;
+    transition-duration: var(--TRANSITION_LENGTH);
+    transition-timing-function: linear;
 }
 #active{
     opacity: 1;
@@ -100,12 +156,14 @@ ul{
     z-index: 1;
 }
 @media (min-width: 1281px) {
-    #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+    /* #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; } */
     * { --img-size: 25vw; }
- }
+    .info_box{ font-size: 1.5rem; }
+}
 @media (max-width: 1280px) {
-    #flexbox_frame{ grid-template-columns: 1fr 1fr; }
+    /* #flexbox_frame{ grid-template-columns: 1fr 1fr; } */
     * { --img-size: 49vw; }
+    .info_box{ font-size: 1.3rem; }
 }
 @media (max-width: 700px) {
     #flexbox_frame{ grid-template-columns: 1fr; }
