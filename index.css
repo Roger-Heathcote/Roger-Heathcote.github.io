@@ -13,16 +13,22 @@ body {
     --LGA-end: #444444;
     --LGB-start: #BBBB22;
     --LGB-end: #FFFF99;
+    --MAX-WIDTH: 1500px;
+    --TOP-MENU-HEIGHT: 4rem;
     color: #EEE;
     background-color: #333;
-    font-size: 62.5%;
-    /* font-family: Arial, Helvetica, sans-serif; */
+    /* font-size: 62.5%; */
     font-family: Arial, Helvetica, sans-serif;
-    /* text-align: justify; */
+    text-align: justify;
     margin-left: auto;
     margin-right: auto;
-    max-width:1500px;
+    max-width: var(--MAX-WIDTH);
     background: #333;
+    font-size: 1.1rem;
+    scroll-padding-top: var(--TOP-MENU-HEIGHT);
+}
+#menu_ballast{
+    height: var(--TOP-MENU-HEIGHT);
 }
 h1{
     font-size: 2rem;
@@ -30,24 +36,31 @@ h1{
     padding: 1rem;
 }
 main {
+    /* padding-top: var(--TOP-MENU-HEIGHT); */
+    scroll-padding-top: var(--TOP-MENU-HEIGHT);
     background: #444;
 }
 section{
     background: linear-gradient(90deg, var(--LGA-start), var(--LGA-end));
 }
-#stark_truths, header, #learning{
+header{
+    position: fixed;
+    width: 100%;
+    max-width: var(--MAX-WIDTH);
+    z-index: 3;
+}
+#stark_truths, #learning, #title_bar{
     color: #111;
     background: linear-gradient(90deg, var(--LGB-start), var(--LGB-end));
 }
 #carousel_automatic label{
-    height: 50%;
-    background: #F00;
-    padding: 0px;
-    margin: 0px;
+    /* height: 50%; */
+    /* background: #F00; */
 }
 #OL_auto_checkbox{
-    height: 100%;
-    /* width: 5vw; TODO - WTF!*/
+    /* height: 100%; */
+    /* width: 5vw; */
+    /* Turns out it's harder than you'd think to scale a checkbox nicely! */
 }
 li{
     list-style-type: none;
@@ -63,16 +76,49 @@ p{
     /* display: grid; */
     /* grid-template-columns: 50% 50%; */
 }
+#top_menu{
+    padding-top: 0.5em;
+    height: var(--TOP-MENU-HEIGHT);
+    /* display: table; */
+    /* vertical-align: middle; */
+    width: 100%;
+    background: hsl(200, 100%, 30%);
+    font-size: 2rem;
+}
+
+#top_menu ul{
+    display: flex;
+    width: 100%;
+    /* border: 1px solid blue; */
+    justify-content: space-around;
+    vertical-align: center;
+}
+#top_menu li{
+    /* border: 1px solid red; */
+}
+#top_menu li a{
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+/* #truth_bullets{
+    padding-right: 1em;
+} */
+ul{
+    padding-left: 1em;
+    padding-right: 1em;
+}
 #truth_bullets li{
     list-style-type: circle;
     list-style-position: inside;
     text-indent: -1em;
-    padding-left: 2em;
+    padding-left: 1em;
     padding-bottom: 0.5rem;
 }
 
 .info_box{
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
 }
 #carousel{
     min-height: var(--img-size);
@@ -118,7 +164,7 @@ p{
 }
 #carousel_automatic{
     background: rgba(0,0,0,0.5);
-    height: calc(var(--img-size)*0.15);
+    /* height: calc(var(--img-size)*0.15); */
     text-align: right;
     margin: calc(var(--img-size)*0.02);
     background: rgba(0,0,0,0.5);
@@ -159,17 +205,31 @@ p{
     /* #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; } */
     * { --img-size: 25vw; }
     .info_box{ font-size: 1.5rem; }
+    
 }
 @media (max-width: 1280px) {
     /* #flexbox_frame{ grid-template-columns: 1fr 1fr; } */
     * { --img-size: 49vw; }
     .info_box{ font-size: 1.3rem; }
+    body{ --TOP-MENU-HEIGHT: 3rem; }
+    #top_menu{ font-size: 1.5rem; }
 }
 @media (max-width: 700px) {
     #flexbox_frame{ grid-template-columns: 1fr; }
-    * { --img-size: 100vw; }
+    * { --img-size: 99vw; }
     .info_box{
         min-height: initial;
     }
+    body{ --TOP-MENU-HEIGHT: 2rem; }
+    #top_menu{ font-size: 1rem; }
+    h1{ font-size: 1.5rem; }
+}
+
+@media (max-width: 500px) {
+    #top_menu ul{
+        flex-direction: column;
+    }
+    body { --TOP-MENU-HEIGHT: 4rem; }
+    h1{ font-size: 1.5rem; }
 }
 
