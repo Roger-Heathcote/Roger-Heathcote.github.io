@@ -5,8 +5,6 @@
     vertical-align: baseline;
     box-sizing: border-box;
 }
-/* background: linear-gradient(90deg, , #444444); */
-/* background: linear-gradient(90deg, #BBBB22, #FFFF99); */
 body {
     --TRANSITION_LENGTH: 2s;
     --LGA-start: #222222;
@@ -17,7 +15,6 @@ body {
     --TOP-MENU-HEIGHT: 4rem;
     color: #EEE;
     background-color: #333;
-    /* font-size: 62.5%; */
     font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
     margin-left: auto;
@@ -27,16 +24,12 @@ body {
     font-size: 1.1rem;
     scroll-padding-top: var(--TOP-MENU-HEIGHT);
 }
-#menu_ballast{
-    height: var(--TOP-MENU-HEIGHT);
-}
 h1{
     font-size: 2rem;
-    /* font-weight: lighter; */
     padding: 1rem;
 }
 main {
-    /* padding-top: var(--TOP-MENU-HEIGHT); */
+    padding-top: var(--TOP-MENU-HEIGHT);
     scroll-padding-top: var(--TOP-MENU-HEIGHT);
     background: #444;
 }
@@ -53,13 +46,7 @@ header{
     color: #111;
     background: linear-gradient(90deg, var(--LGB-start), var(--LGB-end));
 }
-#carousel_automatic label{
-    /* height: 50%; */
-    /* background: #F00; */
-}
 #OL_auto_checkbox{
-    /* height: 100%; */
-    /* width: 5vw; */
     /* Turns out it's harder than you'd think to scale a checkbox nicely! */
 }
 li{
@@ -69,32 +56,18 @@ p{
     padding-bottom: 1rem;
     padding: 0.5em;
 }
-#title{
-    padding-left: 0.5rem;
-}
-#flexbox_frame{
-    /* display: grid; */
-    /* grid-template-columns: 50% 50%; */
-}
+#title_bar h1 { padding-left: 0.5rem; }
 #top_menu{
     padding-top: 0.5em;
     height: var(--TOP-MENU-HEIGHT);
-    /* display: table; */
-    /* vertical-align: middle; */
     width: 100%;
     background: hsl(200, 100%, 30%);
     font-size: 2rem;
 }
-
 #top_menu ul, #learning ul{
     display: flex;
     width: 100%;
-    /* border: 1px solid blue; */
     justify-content: space-around;
-    vertical-align: center;
-}
-#top_menu li{
-    /* border: 1px solid red; */
 }
 #top_menu li a{
     width: 100%;
@@ -102,9 +75,6 @@ p{
     color: white;
     text-decoration: none;
 }
-/* #truth_bullets{
-    padding-right: 1em;
-} */
 ul{
     padding-left: 1em;
     padding-right: 1em;
@@ -115,10 +85,6 @@ ul{
     text-indent: -1em;
     padding-left: 1em;
     padding-bottom: 0.5rem;
-}
-
-.info_box{
-    /* font-size: 1.1rem; */
 }
 #carousel{
     min-height: var(--img-size);
@@ -160,86 +126,74 @@ ul{
     width: calc(var(--img-size)*0.15);
     margin: calc(var(--img-size)*0.02);
     background: rgba(0,0,0,0.5);
-    border-radius: 10px;
+    border-radius: calc(var(--img-size)*0.02);
 }
 #carousel_automatic{
     background: rgba(0,0,0,0.5);
-    /* height: calc(var(--img-size)*0.15); */
-    text-align: right;
+    /* text-align: right; */
     margin: calc(var(--img-size)*0.02);
     background: rgba(0,0,0,0.5);
-    border-radius: 10px;
+    border-radius: calc(var(--img-size)*0.02);
     padding-left: calc(var(--img-size)*0.02);
     padding-right: calc(var(--img-size)*0.02);
 }
 .button_svg{
     height: 50%;
     width: 50%;
+    transition: 0.05s
 }
-/* TODO, check if all these still neccessary */
+.button_svg:hover{
+    height: 53%;
+    width: 53%;
+}
 .carousel_image{
     position: absolute;
-    max-width: var(--img-size);
-    max-height: var(--img-size);
     width: var(--img-size);
     height: var(--img-size);
-    object-fit: cover;
     background-position: center;
     background-size: cover;
     opacity: 0;
-    z-index: 0;
-    /* overflow: hidden; */
 }
 .transition_returns{
-    /* transition: opacity var(--TRANSITION_LENGTH) ease-in-out;
-    transition: transform  ease-in-out; */
     transition-property: opacity, transform;
     transition-duration: var(--TRANSITION_LENGTH);
-    transition-timing-function: linear;
 }
 #active{
     opacity: 1;
-    /* transition: opacity var(--TRANSITION_LENGTH) ease-in-out; */
     z-index: 1;
 }
-
-/* #learning ul{
-    display: flex;
-} */
 #learning img{
     width: 25vw;
     height: 25vw;
 }
-
 @media (min-width: 1281px) {
-    /* #flexbox_frame{ grid-template-columns: 1fr 1fr 1fr 1fr; } */
-    * { --img-size: 25vw; }
-    .info_box{ font-size: 1.5rem; }
-    
+    body{
+        --img-size: 25vw;
+        font-size: 1.5rem;
+    }
 }
 @media (max-width: 1280px) {
-    /* #flexbox_frame{ grid-template-columns: 1fr 1fr; } */
-    * { --img-size: 49vw; }
-    .info_box{ font-size: 1.3rem; }
-    body{ --TOP-MENU-HEIGHT: 3rem; }
+    body{
+        --img-size: 49vw;
+        --TOP-MENU-HEIGHT: 3rem;
+        font-size: 1.3rem;
+    }
     #top_menu{ font-size: 1.5rem; }
 }
 @media (max-width: 700px) {
-    /* #flexbox_frame{ grid-template-columns: 1fr; } */
-    * { --img-size: 99vw; }
-    .info_box{
-        min-height: initial;
+    body{
+        --img-size: 99vw;
+        --TOP-MENU-HEIGHT: 2rem;
     }
-    body{ --TOP-MENU-HEIGHT: 2rem; }
     #top_menu{ font-size: 1rem; }
     h1{ font-size: 1.5rem; }
 }
-
 @media (max-width: 500px) {
     #top_menu ul{
         flex-direction: column;
     }
-    body { --TOP-MENU-HEIGHT: 4.5rem; }
+    body {
+        --TOP-MENU-HEIGHT: 4.5rem;
+    }
     h1{ font-size: 1.5rem; }
 }
-

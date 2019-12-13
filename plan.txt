@@ -39,8 +39,13 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
     FEATURES
 
-      Need serious cleanup of css code, there's loads of dead code in there now
-    
+      Check placeholder gif is displayed for slow connections
+        Heard Chrome can emulate slow connection
+          Figure that out.
+        Try to refactor placeholder into parent element to trim what looks to be a surplus div
+
+      Refactor so svg buttons don't need scaling by 50%;
+
       Write another transition or two
       
       Test navigation using only keyboard.
@@ -63,8 +68,13 @@ Include an image carousel (the image carousel must be built into your website, a
     BUGS
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
       In phone layout first H1 (Why Coding?) top padding looks to be missing
-    
+      In smallest layout a horizontal scroll appears
+        Not entirely sure what is causing it, investigate
+      scroll-padding-top only working in chromium
+        Which is odd as MDN says it's supported in FF & chrome
   DONE
+    Serious cleanup of css and HTML code, there's loads of dead code in there now
+      45lines of cssand several divs, ids and a class removed
     Incorporate icons for: FCC, GitHub, Codewars
     Added navigation links along top
     Decided against burger menu, nav menu switches to column in small screen layout now.
