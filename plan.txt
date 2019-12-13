@@ -40,14 +40,12 @@ Include an image carousel (the image carousel must be built into your website, a
     FEATURES
 
       Need serious cleanup of css code, there's loads of dead code in there now
-
-      Get icons for: FCC, GitHub, Codewars
-        Downloaded icons
-        Incorporate icons
     
       Write another transition or two
       
-      More testing with screen reader
+      Test navigation using only keyboard.
+
+      Further testing with screen reader
         Yikes, Orca starts reporting each individual carousel transition
           Assume this is some kind of focus issue
           Investigate how to stop it!
@@ -67,6 +65,7 @@ Include an image carousel (the image carousel must be built into your website, a
       In phone layout first H1 (Why Coding?) top padding looks to be missing
     
   DONE
+    Incorporate icons for: FCC, GitHub, Codewars
     Added navigation links along top
     Decided against burger menu, nav menu switches to column in small screen layout now.
     Make control overlay invisible by default
