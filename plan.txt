@@ -64,22 +64,27 @@ Include an image carousel (the image carousel must be built into your website, a
 
     BUGS
 
-      In phone layout first H1 (Why Coding?) top padding looks to be missing
-
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
           There are lots of gnarly looking hacksbut hacks are hard to maintain
             and I don't have all the different browsers to test it in
           Use a different element
             Could replace with a pause/play graphic
-            Could replace with fake checkboxaa
-      In smallest layout a horizontal scroll appears
-        Not entirely sure what is causing it, investigate
+            Could replace with fake checkboxa
+
       scroll-padding-top only working in chromium
         Which is odd as MDN says it's supported in FF & chrome
 
   
   DONE
+    Added new breakpoint at 350px to change text justification to left
+      as justify starts to look silly at that size.
+    In smallest layout a horizontal scroll appears
+      Prob occurs when scaling section to 100vw as vw units
+      shockingly, don't take account of the width of scroll bars!
+      Could fix this by using calc to adjust but that seems a bit
+      fussy/hacky and there are browsers I can't test that on easily
+      so I have added overflow-x: hidden to the body.
     Decided against - Refactor so svg buttons don't need scaling by 50%;
       Tried doing that but turns out of the SVG is already at 100% and you use
       css to scale it to 105% it changes the size of it's container and breaks the
@@ -118,3 +123,5 @@ Include an image carousel (the image carousel must be built into your website, a
       loading.gif not displaying despite being downloaded in throttled test
       Label text is pushedout of box
       Fixed padding on lists
+      In phone layout first H1 (Why Coding?) top padding looks to be missing
+        Unwanted border collapsing, fixed by adding margin to carousel section.
