@@ -41,8 +41,6 @@ Include an image carousel (the image carousel must be built into your website, a
 
       Spellcheck and correct copy
 
-      Refactor so svg buttons don't need scaling by 50%;
-
       Write another transition or two
       
       Test navigation using only keyboard.
@@ -65,8 +63,16 @@ Include an image carousel (the image carousel must be built into your website, a
       Learning section icons may be unneccesarily large, check and scale down if OTT
 
     BUGS
-      Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
+
       In phone layout first H1 (Why Coding?) top padding looks to be missing
+
+      Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
+        Solutions?
+          There are lots of gnarly looking hacksbut hacks are hard to maintain
+            and I don't have all the different browsers to test it in
+          Use a different element
+            Could replace with a pause/play graphic
+            Could replace with fake checkboxaa
       In smallest layout a horizontal scroll appears
         Not entirely sure what is causing it, investigate
       scroll-padding-top only working in chromium
@@ -74,6 +80,11 @@ Include an image carousel (the image carousel must be built into your website, a
 
   
   DONE
+    Decided against - Refactor so svg buttons don't need scaling by 50%;
+      Tried doing that but turns out of the SVG is already at 100% and you use
+      css to scale it to 105% it changes the size of it's container and breaks the
+      layout so it's actually better to scale it down first and give yourself the
+      headroom to scale it up later.
     Low speed testing - using chrome dev tools throttle feature.
       Refactored placeholder gif into parent element and removed surplus div
       Verified placeholder downloaded and shown first
