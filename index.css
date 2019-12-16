@@ -33,7 +33,7 @@ main {
     scroll-padding-top: var(--TOP-MENU-HEIGHT);
     background: #444;
 }
-section{
+#why_coding, #why_fac {
     background: linear-gradient(90deg, var(--LGA-start), var(--LGA-end));
 }
 header{

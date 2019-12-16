@@ -19,6 +19,7 @@ let transition_last = transition_end.bind(null, "last");
 // STATIC ELEMENTS
 // STATIC ELEMENTS
 // const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
+const CAROUSEL = document.getElementById("carousel");
 const CAROUSEL_IMAGES = document.getElementById("carousel_images");
 const AUTO_CHECKBOX = document.getElementById("OL_auto_checkbox")
 
@@ -102,7 +103,8 @@ function imageLoadHandler( value ){
         if (!CAROUSEL_ACTIVE){
             CAROUSEL_ACTIVE = true;
             FIRST_ELEMENT = images[0];
-            FIRST_ELEMENT.setAttribute("id", "active");;
+            FIRST_ELEMENT.setAttribute("id", "active");
+            CAROUSEL.style.background = "initial";
             carouselOn();
         }
     }

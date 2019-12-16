@@ -39,10 +39,7 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
     FEATURES
 
-      Check placeholder gif is displayed for slow connections
-        Heard Chrome can emulate slow connection
-          Figure that out.
-        Try to refactor placeholder into parent element to trim what looks to be a surplus div
+      Spellcheck and correct copy
 
       Refactor so svg buttons don't need scaling by 50%;
 
@@ -65,6 +62,8 @@ Include an image carousel (the image carousel must be built into your website, a
             Using following vars to specify the two gradient fills
               --LGA-start, --LGA-end, --LGB-start, --LGB-end
 
+      Learning section icons may be unneccesarily large, check and scale down if OTT
+
     BUGS
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
       In phone layout first H1 (Why Coding?) top padding looks to be missing
@@ -72,7 +71,13 @@ Include an image carousel (the image carousel must be built into your website, a
         Not entirely sure what is causing it, investigate
       scroll-padding-top only working in chromium
         Which is odd as MDN says it's supported in FF & chrome
+
+  
   DONE
+    Low speed testing - using chrome dev tools throttle feature.
+      Refactored placeholder gif into parent element and removed surplus div
+      Verified placeholder downloaded and shown first
+      Verified carousel starts as soonas first two images arrive
     Serious cleanup of css and HTML code, there's loads of dead code in there now
       45lines of cssand several divs, ids and a class removed
     Incorporate icons for: FCC, GitHub, Codewars
@@ -99,5 +104,6 @@ Include an image carousel (the image carousel must be built into your website, a
       Made title more descriptive
       Improve nav contrast for accessibility.
     FIXED BUGS
-        Label text is pushedout of box
-        Fixed padding on lists
+      loading.gif not displaying despite being downloaded in throttled test
+      Label text is pushedout of box
+      Fixed padding on lists
