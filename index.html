@@ -19,13 +19,13 @@
             <section id="title_bar">
                     <h1>Roger Heathcote. Application for the Founders and Coders Spring 2020 cohort.</h1>
             </section>
-            <section id="carousel" style="background: rgba(0,0,0,0) url('/carousel/loading.gif') no-repeat center top/cover;">
+            <section id="carousel" tabindex="-1" style="background: rgba(0,0,0,0) url('/carousel/loading.gif') no-repeat center top/cover;">
                     
                 <div id="carousel_overlay">
                     <div id="OL_top"></div>
                     <div id="OL_mid">
                         <div id="OL_left">
-                                <button id="OL_left_button" class="carousel_button">
+                                <button id="OL_left_button" class="carousel_button" aria-label="Image Carousel Back">
                                 <svg
                                     class="button_svg"
                                     fill="white"
@@ -36,7 +36,7 @@
                             </button>
                         </div>
                         <div id="OL_right">
-                            <button  id="OL_right_button" class="carousel_button">
+                            <button  id="OL_right_button" class="carousel_button"  aria-label="Image Carousel Forward">
                                 <svg
                                     class="button_svg"
                                     fill="white"
@@ -50,7 +50,7 @@
                     <div id="OL_bottom">
                         <div id="carousel_automatic">
                             <label for="OL_auto_checkbox">Automatic</label>
-                            <input id="OL_auto_checkbox" type="checkbox" checked>
+                            <input id="OL_auto_checkbox" type="checkbox"  aria-label="Image Carousel automatic progression" checked>
                         </div>
                     </div>
                 </div>

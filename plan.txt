@@ -61,9 +61,6 @@ Include an image carousel (the image carousel must be built into your website, a
 
     BUGS
     
-      Orca starts reporting each individual carousel transition
-          Assume this is some kind of focus issue
-          Investigate how to stop it!
 
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
@@ -77,7 +74,7 @@ Include an image carousel (the image carousel must be built into your website, a
 
       Get rid of multiple transitions mechanism
         It is broken and there isn't time to fix/redo it.
-        
+
 
   DONE
     Learning section icons may be unneccesarily large, check and scale down if OTT
@@ -123,7 +120,11 @@ Include an image carousel (the image carousel must be built into your website, a
     ACCESSIBILITY ADJUSTMENTS
       Made title more descriptive
       Improve nav contrast for accessibility.
+      Carousel buttons are graphical, added aria-labels to describe them
+      Also added explanatory aria-label for Automatic checkbox
     FIXED BUGS
+      Orca starts reporting each individual carousel transition
+        Removed "carousel" sectionfrom the tab flow by setting tab-index to -1.
       H1 checkbox is indented twice as much as the paragraphs
       Learning icons pop out of the body at very large sizes
       scroll-padding-top only working in chromium
