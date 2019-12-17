@@ -30,6 +30,9 @@ h1{
     font-size: 2rem;
     padding: 1rem 0.5rem 1rem 0.5rem;
 }
+a:focus, #OL_left_button:focus, #OL_right_button:focus, #OL_auto_checkbox:focus{
+    outline: 3px solid red;
+}
 main {
     padding-top: var(--TOP-MENU-HEIGHT);
     scroll-padding-top: var(--TOP-MENU-HEIGHT);
