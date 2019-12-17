@@ -18,7 +18,7 @@ let transition_last = transition_end.bind(null, "last");
 // STATIC ELEMENTS
 // STATIC ELEMENTS
 // STATIC ELEMENTS
-// const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
+const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
 const CAROUSEL = document.getElementById("carousel");
 const CAROUSEL_IMAGES = document.getElementById("carousel_images");
 const AUTO_CHECKBOX = document.getElementById("OL_auto_checkbox")
@@ -31,9 +31,19 @@ document.getElementById("OL_left_button").addEventListener("click", goLeft, fals
 document.getElementById("OL_right_button").addEventListener("click", goRight, false);
 document.addEventListener("keydown", keyDownHandler, false);
 
+// document.addEventListener("onfocus", focusHandler, false);
+document.addEventListener("focusin", focusHandler, false);
+
+// document.getElementById("OL_right_button").addEventListener("focusin", focusHandler, false);
+
 // EVENT HANDLERS
 // EVENT HANDLERS
 // EVENT HANDLERS
+function focusHandler(e){
+    // Show/hide control overlay if focus events happen within #carousel
+    let val = ancestorHasID(e.srcElement, 'carousel') ? "1" : "0";
+    CAROUSEL_OVERLAY.style.opacity = val;
+}       
 function keyDownHandler(e){
     console.log("IN KEYDOWN HANDLER");
     if(!e.isComposing){
@@ -126,6 +136,16 @@ function handleImageList( requestResult ) {
             image.src = "/carousel/images/" + value;
         }
     });
+}
+
+// MISC
+// MISC
+// MISC
+function ancestorHasID(elem, id){
+    // recursively checks up the family tree for specific id
+    if(elem.id === id) return true;
+    if(elem.parentElement) return ancestorHasID(elem.parentElement, id);
+    return false;
 }
 
 function main(){

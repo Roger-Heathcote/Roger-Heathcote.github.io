@@ -54,6 +54,10 @@ Include an image carousel (the image carousel must be built into your website, a
 
     FEATURES
 
+      Learning about
+        Tested in FF, Chrome, Chromium, Android Chrome
+        Not: Opera or Safari
+
       Incorporate my notes on HTML, CSS etc
       Link to github of this file
       Link to git log?
@@ -61,15 +65,13 @@ Include an image carousel (the image carousel must be built into your website, a
     BUGS
     
       Keyboard navigation.
-        The Carousel control overlay is hidden by default
-          This means 3 of the pages focussable controls are not visible
-        Soutions:
-          in JS Catch the focus event
-            If we are one of the three focusable elements
-              Make visible
-            If we're not
-              Make not
-
+        If mouse is over when tabbing starts but user then tabs out
+          Then opacity is set to zero and hover doesn't retrigger so
+            User must click to get controls back
+          Solution?
+            Check if mouse is over carousel and don't set opacity
+              back if it is.
+              
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
           There are lots of gnarly looking hacksbut hacks are hard to maintain
@@ -85,6 +87,7 @@ Include an image carousel (the image carousel must be built into your website, a
 
 
   DONE
+    Make carousel control overlay when tabbing
     Learning section icons may be unneccesarily large, check and scale down if OTT
     Added new breakpoint at 350px to change text justification to left
       as justify starts to look silly at that size.
@@ -131,6 +134,9 @@ Include an image carousel (the image carousel must be built into your website, a
       Carousel buttons are graphical, added aria-labels to describe them
       Also added explanatory aria-label for Automatic checkbox
     FIXED BUGS
+      Carousel control overlay was hidden by default
+        Now focus events are checked and the overlay is made visible
+        When tabbing within it
       Top three menu items have visible focus indicators - the three links at the bottom don't
         Added outline to all 9 focusable elements
       Orca starts reporting each individual carousel transition
