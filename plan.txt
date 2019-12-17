@@ -48,11 +48,8 @@ Include an image carousel (the image carousel must be built into your website, a
       Link to git log?
 
       Further testing with screen reader
-        Yikes, Orca starts reporting each individual carousel transition
-          Assume this is some kind of focus issue
-          Investigate how to stop it!
-        Any way to test with something that isn't Orka?
-          Maybe test on a windows box?
+      Any way to test with something that isn't Orka?
+        Maybe test on a windows box?
 
       Investigate other color schemes
         paying attention to contrast ratio for accessibility
@@ -63,6 +60,10 @@ Include an image carousel (the image carousel must be built into your website, a
       Write another transition or two
 
     BUGS
+    
+      Orca starts reporting each individual carousel transition
+          Assume this is some kind of focus issue
+          Investigate how to stop it!
 
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
@@ -70,10 +71,14 @@ Include an image carousel (the image carousel must be built into your website, a
             and I don't have all the different browsers to test it in
           Use a different element
             Could replace with a pause/play graphic
-            Could replace with fake checkboxa
-
-
+            Could replace with fake checkbox
   
+    REFACTORING
+
+      Get rid of multiple transitions mechanism
+        It is broken and there isn't time to fix/redo it.
+        
+
   DONE
     Learning section icons may be unneccesarily large, check and scale down if OTT
     Added new breakpoint at 350px to change text justification to left
@@ -119,6 +124,7 @@ Include an image carousel (the image carousel must be built into your website, a
       Made title more descriptive
       Improve nav contrast for accessibility.
     FIXED BUGS
+      H1 checkbox is indented twice as much as the paragraphs
       Learning icons pop out of the body at very large sizes
       scroll-padding-top only working in chromium
         Turns out it works in FF & Chrome but firefox only obeys it if it is set
