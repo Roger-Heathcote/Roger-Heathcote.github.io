@@ -23,10 +23,10 @@ Include an image carousel (the image carousel must be built into your website, a
     High priority...
       DO Whole page should be very accessible - test with a screen reader
       DO Should work with a flexible number of images.
-      DO Should permit more than one transition e.g. crossfade, left wipe, right wipe etc.
-    Would be nice
       DO Should be able to start before all images have been downloaded with more images added as they arrive
       DO Should be configurable without touching the code files e.g. using a text or json file
+    Would be nice
+      LATER Permit more than one transition e.g. crossfade, left wipe, right wipe etc.
       LATER Allow smaller alternative image files so not to waste bandwidth for small screens
       LATER make carousel a web component?
 
@@ -39,11 +39,15 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
     FEATURES
 
-      Spellcheck and correct copy
-
-      Write another transition or two
+      Learning section icons may be unneccesarily large, check and scale down if OTT
       
+      Spellcheck and correct copy
+    
       Test navigation using only keyboard.
+
+      Incorporate my notes on HTML, CSS etc
+      Link to github of this file
+      Link to git log?
 
       Further testing with screen reader
         Yikes, Orca starts reporting each individual carousel transition
@@ -52,17 +56,16 @@ Include an image carousel (the image carousel must be built into your website, a
         Any way to test with something that isn't Orka?
           Maybe test on a windows box?
 
-      Incorporate my notes on HTML, CSS etc
-
       Investigate other color schemes
         paying attention to contrast ratio for accessibility
           Specify colors with hls so this is eay to check
             Using following vars to specify the two gradient fills
               --LGA-start, --LGA-end, --LGB-start, --LGB-end
 
-      Learning section icons may be unneccesarily large, check and scale down if OTT
+      Write another transition or two
 
     BUGS
+
 
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
@@ -72,8 +75,6 @@ Include an image carousel (the image carousel must be built into your website, a
             Could replace with a pause/play graphic
             Could replace with fake checkboxa
 
-      scroll-padding-top only working in chromium
-        Which is odd as MDN says it's supported in FF & chrome
 
   
   DONE
@@ -120,6 +121,12 @@ Include an image carousel (the image carousel must be built into your website, a
       Made title more descriptive
       Improve nav contrast for accessibility.
     FIXED BUGS
+      Learning icons pop out of the body at very large sizes
+      scroll-padding-top only working in chromium
+        Turns out it works in FF & Chrome but firefox only obeys it if it is set
+          inside of the 'html' element in the css!
+          I had been setting it within 'body'.
+        Support not quite universal - no IE no Edge and Safari is in preview.
       loading.gif not displaying despite being downloaded in throttled test
       Label text is pushedout of box
       Fixed padding on lists
