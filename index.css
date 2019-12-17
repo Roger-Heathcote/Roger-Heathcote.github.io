@@ -167,8 +167,8 @@ ul{
 #learning img{
     width: 20vw;
     height: 20vw;
-    max-width: calc( var(--MAX-WIDTH) / 4 );
-    max-height: calc( var(--MAX-WIDTH) / 4 );
+    max-width: calc( var(--MAX-WIDTH) / 8 );
+    max-height: calc( var(--MAX-WIDTH) / 8 );
 }
 @media (min-width: 1281px) {
     body{
