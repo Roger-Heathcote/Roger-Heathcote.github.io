@@ -39,8 +39,6 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
     FEATURES
 
-      Learning section icons may be unneccesarily large, check and scale down if OTT
-      
       Spellcheck and correct copy
     
       Test navigation using only keyboard.
@@ -66,7 +64,6 @@ Include an image carousel (the image carousel must be built into your website, a
 
     BUGS
 
-
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
           There are lots of gnarly looking hacksbut hacks are hard to maintain
@@ -78,6 +75,7 @@ Include an image carousel (the image carousel must be built into your website, a
 
   
   DONE
+    Learning section icons may be unneccesarily large, check and scale down if OTT
     Added new breakpoint at 350px to change text justification to left
       as justify starts to look silly at that size.
     In smallest layout a horizontal scroll appears
