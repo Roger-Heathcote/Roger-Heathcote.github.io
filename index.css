@@ -28,7 +28,7 @@ body {
 }
 h1{
     font-size: 2rem;
-    padding: 1rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
 }
 main {
     padding-top: var(--TOP-MENU-HEIGHT);
@@ -78,8 +78,8 @@ p{
     text-decoration: none;
 }
 ul{
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 #truth_bullets li{
     list-style-type: circle;
@@ -163,6 +163,9 @@ ul{
 #active{
     opacity: 1;
     z-index: 1;
+}
+#learning{
+    padding-bottom: 3rem;
 }
 #learning img{
     width: 20vw;
