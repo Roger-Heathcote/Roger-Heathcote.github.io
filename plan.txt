@@ -37,15 +37,10 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
   TODO
   TODO
-    FEATURES
 
-      Spellcheck and correct copy
-    
       Test navigation using only keyboard.
-
-      Incorporate my notes on HTML, CSS etc
-      Link to github of this file
-      Link to git log?
+    
+      Spellcheck and correct copy
 
       Further testing with screen reader
       Any way to test with something that isn't Orka?
@@ -57,10 +52,23 @@ Include an image carousel (the image carousel must be built into your website, a
             Using following vars to specify the two gradient fills
               --LGA-start, --LGA-end, --LGB-start, --LGB-end
 
-      Write another transition or two
+    FEATURES
+
+      Incorporate my notes on HTML, CSS etc
+      Link to github of this file
+      Link to git log?
 
     BUGS
     
+      Keyboard navigation.
+        The Carousel control overlay is hidden by default
+          This means 3 of the pages focussable controls are not visible
+        Soutions:
+          in JS Catch the focus event
+            If we are one of the three focusable elements
+              Make visible
+            If we're not
+              Make not
 
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
@@ -123,6 +131,8 @@ Include an image carousel (the image carousel must be built into your website, a
       Carousel buttons are graphical, added aria-labels to describe them
       Also added explanatory aria-label for Automatic checkbox
     FIXED BUGS
+      Top three menu items have visible focus indicators - the three links at the bottom don't
+        Added outline to all 9 focusable elements
       Orca starts reporting each individual carousel transition
         Removed "carousel" sectionfrom the tab flow by setting tab-index to -1.
       H1 checkbox is indented twice as much as the paragraphs
