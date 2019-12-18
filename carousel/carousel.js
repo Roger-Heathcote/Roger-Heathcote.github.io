@@ -2,7 +2,7 @@ let CAROUSEL_ACTIVE = false;
 const TRANSITION_LENGTH_MANUAL = "0.25s"
 const TRANSITION_LENGTH_AUTOMATIC = "2s"
 const CAROUSEL_PAUSE_LENGTH = 5;
-
+const OVERLAY_TIMEOUT = 4;
 let FIRST_ELEMENT = null;
 const TRANSITIONS = [
     transition_dissolve,
@@ -12,12 +12,15 @@ const TRANSITIONS = [
     // transition_spinOut
 ];
 let PAUSE_TIMER = null;
+let OVERLAY_TIMER = null;
 let transition_next = transition_end.bind(null, "next");
 let transition_last = transition_end.bind(null, "last");
 
 // STATIC ELEMENTS
 // STATIC ELEMENTS
 // STATIC ELEMENTS
+// document.getElementById("first_nav").focus();
+document.querySelector("#top_menu ul:first-child a").focus();
 const CAROUSEL_OVERLAY = document.getElementById("carousel_overlay");
 const CAROUSEL = document.getElementById("carousel");
 const CAROUSEL_IMAGES = document.getElementById("carousel_images");
@@ -32,7 +35,7 @@ document.getElementById("OL_right_button").addEventListener("click", goRight, fa
 document.addEventListener("keydown", keyDownHandler, false);
 
 // document.addEventListener("onfocus", focusHandler, false);
-document.addEventListener("focusin", focusHandler, false);
+document.addEventListener("focusin", focusHandler, true);
 
 // document.getElementById("OL_right_button").addEventListener("focusin", focusHandler, false);
 
@@ -41,8 +44,36 @@ document.addEventListener("focusin", focusHandler, false);
 // EVENT HANDLERS
 function focusHandler(e){
     // Show/hide control overlay if focus events happen within #carousel
-    let val = ancestorHasID(e.srcElement, 'carousel') ? "1" : "0";
-    CAROUSEL_OVERLAY.style.opacity = val;
+
+    // Original idea here was to modify the overlay's
+    // opacity directly. That worked for making the overlay
+    // visible but setting it back to zero really messed
+    // things up, breaking the hover that normally makes
+    // it visible. Still not 100% sure what's going on with
+    // that but I suspect it involves a new stacking context
+    // being created when the opacity is reduced.
+    // Code below...
+    //
+    // CAROUSEL_OVERLAY.style.opacity = ancestorHasID(e.srcElement, 'carousel') ? "1" : "0";
+    
+    // This is the second attempt. The opacity is set by
+    // a css rule and that seems to work nicely BUT, because
+    // the carousel elements use ids I had to use !important
+    // to force the rule to apply. I don't feel good about
+    // that but it will do as a band aid until the carousel
+    // can be refactored to use classes instead. Also a timer
+    // fades the overlay away after 5 seconds.
+
+    if(ancestorHasID(e.srcElement, 'carousel')){
+        CAROUSEL_OVERLAY.classList.add("force_overlay_visible");
+        console.log("ADDING force_overlay_visible class to #carousel_overlay");
+        if(OVERLAY_TIMER) clearTimeout(OVERLAY_TIMER);
+        OVERLAY_TIMER = setTimeout(()=>{
+            CAROUSEL_OVERLAY.classList.remove("force_overlay_visible");
+        }, OVERLAY_TIMEOUT  * 1000 );
+    } else {
+        CAROUSEL_OVERLAY.classList.remove("force_overlay_visible"); 
+    };
 }       
 function keyDownHandler(e){
     console.log("IN KEYDOWN HANDLER");
@@ -142,7 +173,7 @@ function handleImageList( requestResult ) {
 // MISC
 // MISC
 function ancestorHasID(elem, id){
-    // recursively checks up the family tree for specific id
+    // recursively check up the family tree for specific id
     if(elem.id === id) return true;
     if(elem.parentElement) return ancestorHasID(elem.parentElement, id);
     return false;
@@ -180,7 +211,7 @@ main();
 
 // This function moves the "active" id forwards or backwards
 function transition_end(direction){
-    console.log("TRANSITION_END");
+    // console.log("TRANSITION_END");
     let current_node = document.getElementById("active");
     current_node.removeAttribute("id");
     let lastElement = CAROUSEL_IMAGES.lastElementChild;
@@ -248,7 +279,7 @@ function transition_cut_backwards(){
 
 
 function transition_dissolve(){
-    console.log( "Inside dissolve transition.");
+    // console.l                        og( "Inside dissolve transition.");
     current_node = document.getElementById("active");
     // current_node.style.opacity = 0;
     pause_then_proceed();

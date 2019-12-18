@@ -38,8 +38,9 @@ Include an image carousel (the image carousel must be built into your website, a
   TODO
   TODO
 
-      Test navigation using only keyboard.
-    
+      Sanity check: double check all required FCC modules completed
+      Sanity check: double check if github link is the one they asked for
+
       Spellcheck and correct copy
 
       Further testing with screen reader
@@ -64,14 +65,6 @@ Include an image carousel (the image carousel must be built into your website, a
 
     BUGS
     
-      Keyboard navigation.
-        If mouse is over when tabbing starts but user then tabs out
-          Then opacity is set to zero and hover doesn't retrigger so
-            User must click to get controls back
-          Solution?
-            Check if mouse is over carousel and don't set opacity
-              back if it is.
-              
       Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
         Solutions?
           There are lots of gnarly looking hacksbut hacks are hard to maintain
@@ -85,8 +78,13 @@ Include an image carousel (the image carousel must be built into your website, a
       Get rid of multiple transitions mechanism
         It is broken and there isn't time to fix/redo it.
 
+      Factor out use of !important in force_overlay_visible
+        It is currently needed as carousel components are identified with ids
+        Classes should be equally specific so force_overlay_visible being later
+          should mean it wins.
 
   DONE
+    Keyboard navigation
     Make carousel control overlay when tabbing
     Learning section icons may be unneccesarily large, check and scale down if OTT
     Added new breakpoint at 350px to change text justification to left
@@ -134,6 +132,13 @@ Include an image carousel (the image carousel must be built into your website, a
       Carousel buttons are graphical, added aria-labels to describe them
       Also added explanatory aria-label for Automatic checkbox
     FIXED BUGS
+      Keyboard navigation broke hover!
+        More specifically the code I wrote to control overlay visibility using opacity broke hover!
+        Overlay hover just stops working if overlay is set to 0 in JavaScript
+        Banged my head against it for ages, suspect someting to do with stacking contexts. Gave up.
+        Changed tack to use classes so css can mess with the opacity instead.
+        That works but had to use !important - boo! Shouldn't be too hard to
+        factor out by cahnging carousle ids to less specific classes.
       Carousel control overlay was hidden by default
         Now focus events are checked and the overlay is made visible
         When tabbing within it

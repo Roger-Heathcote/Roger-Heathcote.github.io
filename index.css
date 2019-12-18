@@ -108,9 +108,21 @@ ul{
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
 }
-#carousel_overlay:Hover{
+#carousel_overlay:hover{
     opacity: 1;
     transition: opacity 0.25s ease-in-out;
+}
+.force_overlay_visible{
+    /* This overrules #carousel_overlay to display overlay
+    transition: opacity 1s ease-in-out;
+    during keyboard navigation. Setting opacity manually
+    in Javascript broke the hover rule, something to do
+    with stacking contexts I think. Figured I'd try it
+    by adding/removing classes on the "focusin" event.
+    BUT obviously using !important is a source of great
+    shame and it ought to be refactored away some day
+    */
+    opacity: 1 !important;  
 }
 #OL_top{
     grid-column: 1 / 3;
