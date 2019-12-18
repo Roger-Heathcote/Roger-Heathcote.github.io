@@ -97,12 +97,50 @@
                 <p>Overall I can't imagine a course that is a better fit for me than Founders and Coders, regardless of cost. The crowd it seems to attract are the kind of people I would seek out anyway. I don't think it's that big a coincidence that just before the second F&amp;C meetup I attended I bumped into one of my ex-clients from back in the day. We got to chatting about what I was up to and I told her my youngest had just started school full time and that I was retraining and was on my way to a programming meetup. &quot;Ooh is it Founders and Coders?&quot; she replied, &quot;we,'ve just come from there - they made us an app!&quot;.</p>
             </section>
             <section id="learning">
-                <h1>What I've been learning</h1>
-                <ul>
+                <h1>What I've Learned</h1>
+                <figure>
+                    <figcaption><h2>Some key findings, in no particular order...</h2></figcaption>
+                    <ul>      
+                        <li>It is important to concentrate on MVP (minimal viable product) and not get carried away trying to implement too many features up front. This is the YAGNI principle from extreme programming which I had read about but forgot to actually heed initially!</li>
+                        <li>Getting checkboxes to scale nicely across browsers is no picnic. Pick your battles wisely!</li>
+                        <li>If you don't check with a screen reader you <em>will</em> have screen reader issues and, likewise, you can't assume keyboard navigation will just work, it needs testing.</li>
+                        <li>CSS Transitions and Animations are very powerful, if tricky to debug, and should be used in favour of javascript for most basic animations. Resist the temptation to stick with what you know becasue what is new is probably an improvement!</li>
+                        <li>Scroll-padding is handy if you have fixed/absolute elements but it can be rather fickle right now.</li>
+                        <li>Viewport units (vw and vh) do not take account of scrollbars which can lead to some subtle but annoying layout errors.</li>
+                        <li>CSS variables are great for reducing repetition and marshalling settings in one place. Being able to set them in media queries helps avoid duplication and bloat.</li>
+                        <li>I find frontend code harder to write, largely because it is not obvious how to leverage automated testing. Hopefully that is just my ignorance but fundamentally it appears that frontend code and layout are much more liable to change, requiring frequent rewriting and scrapping of tests and therefore not really favouring test driven development. Also several things one might want to test look prohibitively complicated to test automatically e.g. CSS calculations, Transitions, timers, network conditions, varying screen sizes, browser cross compatibility etc.</li>
+                        <li>The ammount of time I spend correcting unwanted autocompletions in VSCode is almost as much time as it saves me in the first place - sometimes it feels like more.</li>
+                    </ul>
+                </figure>              
+                <br>
+
+                <figure>
+                    <figcaption><h2>A list of some of the technical understanding demonstrated in this project...</h2></figcaption>
+
+                <p>
+                    Modern semantic HTML,
+                    Basic CSS3 & responsive design,
+                    CSS Transitions,
+                    CSS Flex box,
+                    CSS Flex grid,
+                    Basic Modern Javascript,
+                    JS DOM selection and manipulation,
+                    JS Event listeners and handling,
+                    JS Timers,
+                    JS XMLHttpRequest,
+                    Recursive functions,
+                    Regular expressions,
+                    SVG Graphics,
+                    and Git
+                </p>
+                </figure>
+                <br>
+                
+                <ul id="learning_profile_links">
                     <li>
                         <a
-                            href="https://www.freecodecamp.org/fcc93f08c83-6f0e-4583-a63f-bfd007f3f27f"
-                            target="_blank"
+                        href="https://www.freecodecamp.org/fcc93f08c83-6f0e-4583-a63f-bfd007f3f27f"
+                        target="_blank"
                         >
                             <img src="assets/free_code_camp_icon.png" alt="My FreeCodeCamp profile">
                         </a>

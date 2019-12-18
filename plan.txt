@@ -34,50 +34,13 @@ APPENDIXES
 
   LEARNING EXTRAS
 
-    Tested in FF, Chrome, Chromium, Android Chrome
-    Not: Opera or Safari
-
-    Things this project demonstrates:
-      getElementById
-      querySelector
-      classList
-      keyDown event handling
-      setTimeout and clearTimeout
-      CSS transitions
-      eventListeners
-      recursive functions
-      bind
-      setting/removing attributes
-      regular expressions
-      XMLHttpRequest
-      Flex box
-      Flex grid
-      Semantic markup
-      SVG
-      Git
-      
-
-    Things I have learned during this project
-      
-      It is important to concentrate on MVP (minimal viable product) and not get carried away trying to implement too many fancy features up front. This is the YAGNI principle from extreme programming which I had read about but forgot to actually heed!
-
-      Getting checkboxes to scale nicely across browsers is no picnic.
-
-      If you don't check with a screen reader you will have screen reader issues and, likewise you can't assume keyboard navigation will just work, it needs testig.
-      
-      CSS Transitions and Animations are very powerful, if tricky to debug, and should be used in favour of javascript for most basic animation.
-      
-      Scroll-padding is handy if you have fixed/absolute elements but it can be rather fickle at the moment.
-
-      Viewport units (vw and vh) do not take account of scrollbars which can lead to some subtle but annoying layout errors.
-
-      CSS variables are great for reducing repetition and marshalling settings in one place. Being able to set them in media queries helps avoid bloat.
-
-      Frontend code is harder to write, primarily because it is not at all obvious how to leverage automated testing in many cases. Hopefully that is just my ignorance but fundamentally it appears that frontend code and layout are much more liable to change, requiring rewriting of tests and therefore not favouring test driven development. Also several things one might want to test look like they are prohibitively complicated to test automatically e.g. CSS calculations, Transitions, timers, network conditions, varying screen sizes, browser cross compatibility etc.
-
     Incorporate my notes on HTML, CSS etc
     Link to github of this file
     Link to git log?
+
+  ROOM FOR IMPROVEMENT
+
+
 
 BUGS
 BUGS

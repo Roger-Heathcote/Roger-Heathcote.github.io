@@ -25,9 +25,16 @@ body {
     background: #333;
     overflow-x: hidden;
 }
-h1{
-    font-size: 2rem;
+h1, h2, h3{
     padding: 1rem 0.5rem 1rem 0.5rem;
+}
+h1{ font-size: 2rem; }
+h2{ font-size: 1.7rem; }
+h3{ font-size: 1.5rem; }
+em { font-weight: bold; }
+ul, p, figure{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 a:focus, #OL_left_button:focus, #OL_right_button:focus, #OL_auto_checkbox:focus{
     outline: 3px solid red;
@@ -58,7 +65,6 @@ li{
 }
 p{
     padding-bottom: 1rem;
-    padding: 0.5em;
 }
 #title_bar h1 { padding-left: 0.5rem; }
 #top_menu{
@@ -68,7 +74,7 @@ p{
     background: hsl(200, 100%, 30%);
     font-size: 2rem;
 }
-#top_menu ul, #learning ul{
+#top_menu ul, #learning_profile_links{
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -79,17 +85,31 @@ p{
     color: white;
     text-decoration: none;
 }
-ul{
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-#truth_bullets li{
+#truth_bullets li, #learning li{
     list-style-type: circle;
     list-style-position: inside;
     text-indent: -1em;
     padding-left: 1em;
     padding-bottom: 0.5rem;
 }
+#learning{
+    padding-bottom: 3rem;
+}
+#learning img{
+    width: 20vw;
+    height: 20vw;
+    max-width: calc( var(--MAX-WIDTH) / 8 );
+    max-height: calc( var(--MAX-WIDTH) / 8 );
+}
+figcaption{
+    padding-bottom: 1rem;
+}
+/* CAROUSEL STUFF */
+/* CAROUSEL STUFF */
+/* CAROUSEL STUFF */
+
+/* Maybe factor this out into it's own file soon */
+
 #carousel{
     min-height: var(--img-size);
     min-width: var(--img-size);
@@ -164,20 +184,16 @@ ul{
 .transition_returns{
     transition-property: opacity, transform;
     transition-duration: var(--TRANSITION_LENGTH);
-}
+} /* TODO - needed? */
 #active{
     opacity: 1;
     z-index: 1;
 }
-#learning{
-    padding-bottom: 3rem;
-}
-#learning img{
-    width: 20vw;
-    height: 20vw;
-    max-width: calc( var(--MAX-WIDTH) / 8 );
-    max-height: calc( var(--MAX-WIDTH) / 8 );
-}
+
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+
 @media (min-width: 1281px) {
     body{
         --img-size: 25vw;
