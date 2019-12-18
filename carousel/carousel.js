@@ -6,8 +6,6 @@ const OVERLAY_TIMEOUT = 4;
 let FIRST_ELEMENT = null;
 let PAUSE_TIMER = null;
 let OVERLAY_TIMER = null;
-let transition_next = transitioner.bind(null, "next");
-let transition_last = transitioner.bind(null, "last");
 
 // STATIC ELEMENTS
 // STATIC ELEMENTS
@@ -31,27 +29,8 @@ document.addEventListener("focusin", focusHandler, true);
 // EVENT HANDLERS
 // EVENT HANDLERS
 function focusHandler(e){
-    // Show/hide control overlay if focus events happen within #carousel
-
-    // Original idea here was to modify the overlay's
-    // opacity directly. That worked for making the overlay
-    // visible but setting it back to zero really messed
-    // things up, breaking the hover that normally makes
-    // it visible. Still not 100% sure what's going on with
-    // that but I suspect it involves a new stacking context
-    // being created when the opacity is reduced.
-    // Code below...
-    //
-    // CAROUSEL_OVERLAY.style.opacity = ancestorHasID(e.srcElement, 'carousel') ? "1" : "0";
-    
-    // This is the second attempt. The opacity is set by
-    // a css rule and that seems to work nicely BUT, because
-    // the carousel elements use ids I had to use !important
-    // to force the rule to apply. I don't feel good about
-    // that but it will do as a band aid until the carousel
-    // can be refactored to use classes instead. Also a timer
-    // fades the overlay away after 5 seconds.
-
+    // If the focusin events come from within the carousel we show the control overlay
+    // for OVERLAY_TIMEOUT seconds. Previously set timeouts are cleared.
     if(ancestorHasID(e.srcElement, 'carousel')){
         CAROUSEL_OVERLAY.classList.add("force_overlay_visible");
         console.log("ADDING force_overlay_visible class to #carousel_overlay");
@@ -65,6 +44,9 @@ function focusHandler(e){
 }       
 function keyDownHandler(e){
     console.log("IN KEYDOWN HANDLER");
+    // There are no form elements on the page yet but we wouldn't want to grab them
+    // so we check isComposing (if user is typing into an input field) if false before
+    // we handle the key press events. 
     if(!e.isComposing){
         console.log("e.key:", e.key);
         if(e.key === "ArrowLeft"){ e.preventDefault(); goLeft(); }
@@ -76,7 +58,6 @@ function keyDownHandler(e){
     }
 }
 function autoCheckboxHandler(e){
-    console.log("Automatic checkbox is:", e.target.checked);
     e.target.checked ? carouselOn() : carouselOff();
 }
 
@@ -86,27 +67,30 @@ function autoCheckboxHandler(e){
 function goRight(){
     AUTO_CHECKBOX.checked = false;
     carouselOff();
-    transition_next();
+    transitioner("next");
 }
 function goLeft(){
     AUTO_CHECKBOX.checked = false;
     carouselOff();
-    transition_last();
+    transitioner("last");
 }
 function carouselOff(){
-    console.log("CAROUSEL OFF");
     if(PAUSE_TIMER) clearTimeout(PAUSE_TIMER);
     PAUSE_TIMER = null;
     document.body.style.setProperty('--TRANSITION_LENGTH', TRANSITION_LENGTH_MANUAL);
 }
 function carouselOn(){
-    console.log("CAROUSEL ON");
     document.body.style.setProperty('--TRANSITION_LENGTH', TRANSITION_LENGTH_AUTOMATIC);
     transition_dissolve();
 }
 function toggleAutomaticCheckbox(){ AUTO_CHECKBOX.checked = !AUTO_CHECKBOX.checked; };
+function transition_dissolve(){
+    PAUSE_TIMER = setTimeout(transitioner, CAROUSEL_PAUSE_LENGTH * 1000, "next");
+}
 function transitioner(direction){
-    // This function moves the "active" id forwards or backwards
+    // This function moves the "active" id forwards or backwards through the images
+    // in #carousel_images, wraps around if it falls off either end, and calls
+    // carouselOn to queue up the nextransition if auto checkbox is ticked.
     let current_node = document.getElementById("active");
     current_node.removeAttribute("id");
     let lastElement = CAROUSEL_IMAGES.lastElementChild;
@@ -118,9 +102,6 @@ function transitioner(direction){
     }
     next_node.setAttribute("id", "active");
     if(AUTO_CHECKBOX.checked) carouselOn();
-}
-function transition_dissolve(){
-    PAUSE_TIMER = setTimeout(transition_next, CAROUSEL_PAUSE_LENGTH * 1000);
 }
 
 // STARTUP

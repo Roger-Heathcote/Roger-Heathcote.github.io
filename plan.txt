@@ -4,14 +4,6 @@ TODO
 
   HIGH PRIORITY
 
-    Factor out use of !important in force_overlay_visible
-      It is currently needed as carousel components are identified with ids
-      Classes should be equally specific so force_overlay_visible being later
-        should mean it wins
-      Strategy A or B?
-          A. replace all carousel ids with classes in html and css and modify all JS code to get by class instead
-          B. augment carousel elements with classes and change css to use classes, leave JS alone.
-
     Spellcheck and correct copy
 
     Sanity check: double check all required FCC modules completed
@@ -63,6 +55,7 @@ APPENDIXES
       Semantic markup
       SVG
       Git
+      
 
     Things I have learned during this project
       
@@ -100,6 +93,11 @@ BUGS
           Could replace with a pause/play graphic
           Could replace with fake checkbox
 
+    Occasional error in console.
+      Error in parsing value for 'transform'. Declaration dropped. 127.0.0.1:5501:3:42
+      Cannot duplicate as of yet. Seems to just turn up when browser is left alone for a while.
+      Doesn't have any noticable effect as far as I can tell.
+
 REFACTORING
 REFACTORING
 REFACTORING
@@ -109,6 +107,12 @@ REFACTORING
 DONE
 DONE
 DONE
+
+  Factor out use of !important in force_overlay_visible
+    Plan B: Augment carousel elements with classes and change css to use classes, leave JS alone.
+      Worked first time and was simpler than I had hoped.
+      Only needed add a single class name to the html, and change the selector of one CSS rule.
+      Feeling pretty proud of my understanding of CSS selector priority right now! :)
   Demonstrate your learning from the prerequisites
     Basic JavaScript
     ES6
