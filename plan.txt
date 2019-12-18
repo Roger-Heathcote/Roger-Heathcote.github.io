@@ -1,188 +1,216 @@
-Demonstrate your learning from the prerequisites
-  Basic JavaScript
-  ES6
-  Basic Data Structures
-  Basic Algorithm Scripting
+TODO
+TODO
+TODO
 
-Tell us about why you are applying for the programme
-  Copy is now in index.html
+  HIGH PRIORITY
 
-Links to github, FCC and codewars
-  Links in index.html
+    Factor out use of !important in force_overlay_visible
+      It is currently needed as carousel components are identified with ids
+      Classes should be equally specific so force_overlay_visible being later
+        should mean it wins
+      Strategy A or B?
+          A. replace all carousel ids with classes in html and css and modify all JS code to get by class instead
+          B. augment carousel elements with classes and change css to use classes, leave JS alone.
 
-Include an image carousel (the image carousel must be built into your website, a link to a separate page or CodePen will not be accepted)
+    Spellcheck and correct copy
 
+    Sanity check: double check all required FCC modules completed
+    Sanity check: double check if github link is the one they asked for
+
+    Incorporate LEARNING EXTRAS
+
+  LOW PRIORITY
+
+    Further testing with screen reader
+    Any way to test with something that isn't Orka?
+      Maybe test on a windows box?
+
+    Investigate other color schemes
+      paying attention to contrast ratio for accessibility
+        Specify colors with hls so this is eay to check
+          Using following vars to specify the two gradient fills
+            --LGA-start, --LGA-end, --LGB-start, --LGB-end
+
+  LONGER TERM
+
+    Permit more than one transition e.g. crossfade, left wipe, right wipe etc.
+    Allow smaller alternative image files so not to waste bandwidth for small screens
+    Make carousel into a web component
+
+
+APPENDIXES
+
+  LEARNING EXTRAS
+
+    Tested in FF, Chrome, Chromium, Android Chrome
+    Not: Opera or Safari
+
+    Things this project demonstrates:
+      getElementById
+      querySelector
+      classList
+      keyDown event handling
+      setTimeout and clearTimeout
+      CSS transitions
+      eventListeners
+      recursive functions
+      bind
+      setting/removing attributes
+      regular expressions
+      XMLHttpRequest
+      Flex box
+      Flex grid
+      Semantic markup
+      SVG
+      Git
+
+    Things I have learned during this project
+      
+      It is important to concentrate on MVP (minimal viable product) and not get carried away trying to implement too many fancy features up front. This is the YAGNI principle from extreme programming which I had read about but forgot to actually heed!
+
+      Getting checkboxes to scale nicely across browsers is no picnic.
+
+      If you don't check with a screen reader you will have screen reader issues and, likewise you can't assume keyboard navigation will just work, it needs testig.
+      
+      CSS Transitions and Animations are very powerful, if tricky to debug, and should be used in favour of javascript for most basic animation.
+      
+      Scroll-padding is handy if you have fixed/absolute elements but it can be rather fickle at the moment.
+
+      Viewport units (vw and vh) do not take account of scrollbars which can lead to some subtle but annoying layout errors.
+
+      CSS variables are great for reducing repetition and marshalling settings in one place. Being able to set them in media queries helps avoid bloat.
+
+      Frontend code is harder to write, primarily because it is not at all obvious how to leverage automated testing in many cases. Hopefully that is just my ignorance but fundamentally it appears that frontend code and layout are much more liable to change, requiring rewriting of tests and therefore not favouring test driven development. Also several things one might want to test look like they are prohibitively complicated to test automatically e.g. CSS calculations, Transitions, timers, network conditions, varying screen sizes, browser cross compatibility etc.
+
+    Incorporate my notes on HTML, CSS etc
+    Link to github of this file
+    Link to git log?
+
+BUGS
+BUGS
+BUGS
+
+  LOW PRIORITY
+
+    Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
+      Solutions?
+        There are lots of gnarly looking hacksbut hacks are hard to maintain
+          and I don't have all the different browsers to test it in
+        Use a different element
+          Could replace with a pause/play graphic
+          Could replace with fake checkbox
+
+REFACTORING
+REFACTORING
+REFACTORING
+
+  None.
+
+DONE
+DONE
+DONE
+  Demonstrate your learning from the prerequisites
+    Basic JavaScript
+    ES6
+    Basic Data Structures
+    Basic Algorithm Scripting
+  Tell us about why you are applying for the programme
+    Copy is now in index.html
+    Links to github, FCC and codewars
+    Links in index.html
   Spec
+    Include an image carousel (the image carousel must be built into your website, a link to a separate page or CodePen will not be accepted)
     Responsive (works on mobile and desktop)
     Display one image at a time
     Move between images when clicking navigation buttons
     Toggle automatically looping through all images with a play/pause button
     Allow keyboard navigation between images with the left/right arrow keys
-
   Goals
     High priority...
       DO Whole page should be very accessible - test with a screen reader
-      DO Should work with a flexible number of images.
+      DO Should work with a flexible number of images
       DO Should be able to start before all images have been downloaded with more images added as they arrive
       DO Should be configurable without touching the code files e.g. using a text or json file
-    Would be nice
-      LATER Permit more than one transition e.g. crossfade, left wipe, right wipe etc.
-      LATER Allow smaller alternative image files so not to waste bandwidth for small screens
-      LATER make carousel a web component?
+  Get rid of multiple transitions mechanism
+    It is broken and there isn't time to fix/redo it
+  Keyboard navigation testing
+  Learning section icons may be unneccesarily large, check and scale down if OTT
+  Added new breakpoint at 350px to change text justification to left
+    as justify starts to look silly at that size
+  In smallest layout a horizontal scroll appears
+    Prob occurs when scaling section to 100vw as vw units
+    shockingly, don't take account of the width of scroll bars!
+    Could fix this by using calc to adjust but that seems a bit
+    fussy/hacky and there are browsers I can't test that on easily
+    so I have added overflow-x: hidden to the body
+  Decided against - Refactor so svg buttons don't need scaling by 50%;
+    Tried doing that but turns out of the SVG is already at 100% and you use
+    css to scale it to 105% it changes the size of it's container and breaks the
+    layout so it's actually better to scale it down first and give yourself the
+    headroom to scale it up later
+  Low speed testing - using chrome dev tools throttle feature.
+    Refactored placeholder gif into parent element and removed surplus div
+    Verified placeholder downloaded and shown first
+    Verified carousel starts as soonas first two images arrive
+  Serious cleanup of css and HTML code, there's loads of dead code in there now
+    45lines of cssand several divs, ids and a class removed
+  Incorporate icons for: FCC, GitHub, Codewars
+  Added navigation links along top
+  Decided against burger menu, nav menu switches to column in small screen layout now.
+  Make control overlay invisible by default
+    done. Make visible on hover for mouse users
+    done. Make visible by clicking for touchscreens
+      Turns out that's how it works by default anyway :)
+  Re-enable loading placeholder animation
+  MANUAL NAVIGATION
+    Make transitions fast in manual mode
+    Switch to manual mode if l/r buttons or arrow keys are used
+    Wire up back and forward buttons
+    Wire up left/right arrow keys
+    Wire up 'A' key to toggle automatic mode
+    Wire up automatic checkbox
+  Finalise and insert copy
+    Size text nicely for each breakpoint then
+    Re-evaluate if square layout is still appropriate
+      Changed from box layout to plain flowing text
+  Choose nice background colors for each section
 
+ACCESSIBILITY
+ACCESSIBILITY
+ACCESSIBILITY
+  Made title more descriptive
+  Improved nav contrast for accessibility
+  Carousel buttons are graphical, added aria-labels to describe them
+  Also added explanatory aria-label for Automatic checkbox
+  Made sure carousel controls become visible when their element become focussed during tabbing
 
-
-
-
-  TODO
-  TODO
-  TODO
-
-      Sanity check: double check all required FCC modules completed
-      Sanity check: double check if github link is the one they asked for
-
-      Spellcheck and correct copy
-
-      Further testing with screen reader
-      Any way to test with something that isn't Orka?
-        Maybe test on a windows box?
-
-      Investigate other color schemes
-        paying attention to contrast ratio for accessibility
-          Specify colors with hls so this is eay to check
-            Using following vars to specify the two gradient fills
-              --LGA-start, --LGA-end, --LGB-start, --LGB-end
-
-    FEATURES
-
-      Learning about
-        Tested in FF, Chrome, Chromium, Android Chrome
-        Not: Opera or Safari
-
-        Things this project demonstrates:
-          getElementById
-          querySelector
-          classList
-          keyDown event handling
-          setTimeout and clearTimeout
-          CSS transitions
-          eventListeners
-          recursive functions
-          bind
-          setting/removing attributes
-          regular expressions
-          XMLHttpRequest
-          Flex box
-          Flex grid
-          Semantic markup
-          SVG
-
-        Things I have learned during this project
-          It is important to concentrate on MVP (minimal viable product) and not get carried away trying to implement too many fancy features up front. This is the YAGNI principle from extreme programming which I had read about but forgot to actually heed!
-          Getting checkboxes to scale nicely across browsers is no picnic
-          If you don't check with a screen reader you will have screen reader issues
-          Likewise you can't assume keyboard navigation will just work
-          CSS Transitions and Animations are very powerful, if tricky to debug and should be used in favour of javascript for basic animation.
-          Scroll-padding is handy if you have fixed/absolute elements but it can be rather fickle at the moment.
-          Viewport units (vw and vh) do not take account of scrollbars which can lead to some subtle but annoying layout errors.
-          CSS variables are great for reducing repetition and marshalling settings in one place, being able to set them in media queries helps avoid bloat.
-
-      Incorporate my notes on HTML, CSS etc
-      Link to github of this file
-      Link to git log?
-
-    BUGS
-    
-      Checkbox does not scale. The rest of the carousel scales fine but checkboxes don't
-        Solutions?
-          There are lots of gnarly looking hacksbut hacks are hard to maintain
-            and I don't have all the different browsers to test it in
-          Use a different element
-            Could replace with a pause/play graphic
-            Could replace with fake checkbox
-  
-    REFACTORING
-
-      Factor out use of !important in force_overlay_visible
-        It is currently needed as carousel components are identified with ids
-        Classes should be equally specific so force_overlay_visible being later
-          should mean it wins.
-
-  DONE
-    Get rid of multiple transitions mechanism
-      It is broken and there isn't time to fix/redo it.
-    Keyboard navigation testing
-    Make carousel control overlay when tabbing
-    Learning section icons may be unneccesarily large, check and scale down if OTT
-    Added new breakpoint at 350px to change text justification to left
-      as justify starts to look silly at that size.
-    In smallest layout a horizontal scroll appears
-      Prob occurs when scaling section to 100vw as vw units
-      shockingly, don't take account of the width of scroll bars!
-      Could fix this by using calc to adjust but that seems a bit
-      fussy/hacky and there are browsers I can't test that on easily
-      so I have added overflow-x: hidden to the body.
-    Decided against - Refactor so svg buttons don't need scaling by 50%;
-      Tried doing that but turns out of the SVG is already at 100% and you use
-      css to scale it to 105% it changes the size of it's container and breaks the
-      layout so it's actually better to scale it down first and give yourself the
-      headroom to scale it up later.
-    Low speed testing - using chrome dev tools throttle feature.
-      Refactored placeholder gif into parent element and removed surplus div
-      Verified placeholder downloaded and shown first
-      Verified carousel starts as soonas first two images arrive
-    Serious cleanup of css and HTML code, there's loads of dead code in there now
-      45lines of cssand several divs, ids and a class removed
-    Incorporate icons for: FCC, GitHub, Codewars
-    Added navigation links along top
-    Decided against burger menu, nav menu switches to column in small screen layout now.
-    Make control overlay invisible by default
-      done. Make visible on hover for mouse users
-      done. Make visible by clicking for touchscreens
-        Turns out that's how it works by default anyway :)
-    Re-enable loading placeholder animation
-    MANUAL NAVIGATION
-      Make transitions fast in manual mode
-      Switch to manual mode if l/r buttons or arrow keys are used
-      Wire up back and forward buttons
-      Wire up left/right arrow keys
-      Wire up 'A' key to toggle automatic mode
-      Wire up automatic checkbox
-    Finalise and insert copy
-      Size text nicely for each breakpoint then
-      Re-evaluate if square layout is still appropriate
-        Changed from box layout to plain flowing text
-    Choose nice background colors for each section
-    ACCESSIBILITY ADJUSTMENTS
-      Made title more descriptive
-      Improve nav contrast for accessibility.
-      Carousel buttons are graphical, added aria-labels to describe them
-      Also added explanatory aria-label for Automatic checkbox
-    FIXED BUGS
-      Fixed bug in getImageList that would have prevented retrying. Was calling the wrong function to retry!
-      Keyboard navigation broke hover!
-        More specifically the code I wrote to control overlay visibility using opacity broke hover!
-        Overlay hover just stops working if overlay is set to 0 in JavaScript
-        Banged my head against it for ages, suspect someting to do with stacking contexts. Gave up.
-        Changed tack to use classes so css can mess with the opacity instead.
-        That works but had to use !important - boo! Shouldn't be too hard to
-        factor out by cahnging carousle ids to less specific classes.
-      Carousel control overlay was hidden by default
-        Now focus events are checked and the overlay is made visible
-        When tabbing within it
-      Top three menu items have visible focus indicators - the three links at the bottom don't
-        Added outline to all 9 focusable elements
-      Orca starts reporting each individual carousel transition
-        Removed "carousel" sectionfrom the tab flow by setting tab-index to -1.
-      H1 checkbox is indented twice as much as the paragraphs
-      Learning icons pop out of the body at very large sizes
-      scroll-padding-top only working in chromium
-        Turns out it works in FF & Chrome but firefox only obeys it if it is set
-          inside of the 'html' element in the css!
-          I had been setting it within 'body'.
-        Support not quite universal - no IE no Edge and Safari is in preview.
-      loading.gif not displaying despite being downloaded in throttled test
-      Label text is pushedout of box
-      Fixed padding on lists
-      In phone layout first H1 (Why Coding?) top padding looks to be missing
-        Unwanted border collapsing, fixed by adding margin to carousel section.
+BUGFIXES
+BUGFIXES
+BUGFIXES
+  Fixed bug in getImageList that would have prevented retrying. Was calling the wrong function to retry!
+  Keyboard navigation broke hover!
+    More specifically the code I wrote to control overlay visibility using opacity broke hover!
+    Overlay hover just stops working if overlay is set to 0 in JavaScript
+    Banged my head against it for ages, suspect someting to do with stacking contexts. Gave up.
+    Changed tack to use classes so css can mess with the opacity instead
+    That works but had to use !important - boo! Shouldn't be too hard to
+    factor out by cahnging carousle ids to less specific classes.
+  Carousel control overlay was hidden by default
+    Now focus events are checked and the overlay is made visible
+    When tabbing within it
+  Top three menu items have visible focus indicators - the three links at the bottom don't
+    Added outline to all 9 focusable elements
+  Orca starts reporting each individual carousel transition
+    Removed "carousel" sectionfrom the tab flow by setting tab-index to -1.
+  H1 checkbox is indented twice as much as the paragraphs
+  Learning icons pop out of the body at very large sizes
+  scroll-padding-top only working in chromium
+    Turns out it works in FF & Chrome but firefox only obeys it if it is set
+      inside of the 'html' element in the css!
+      I had been setting it within 'body'
+    Support not quite universal - no IE no Edge and Safari is in preview
+  loading.gif not displaying despite being downloaded in throttled test
+  Label text is pushedout of box
+  Fixed padding on lists
+  In phone layout first H1 (Why Coding?) top padding looks to be missing
+    Unwanted border collapsing, fixed by adding margin to carousel section
