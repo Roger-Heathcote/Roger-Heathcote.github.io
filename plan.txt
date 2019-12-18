@@ -59,6 +59,34 @@ Include an image carousel (the image carousel must be built into your website, a
         Tested in FF, Chrome, Chromium, Android Chrome
         Not: Opera or Safari
 
+        Things this project demonstrates:
+          getElementById
+          querySelector
+          classList
+          keyDown event handling
+          setTimeout and clearTimeout
+          CSS transitions
+          eventListeners
+          recursive functions
+          bind
+          setting/removing attributes
+          regular expressions
+          XMLHttpRequest
+          Flex box
+          Flex grid
+          Semantic markup
+          SVG
+
+        Things I have learned during this project
+          It is important to concentrate on MVP (minimal viable product) and not get carried away trying to implement too many fancy features up front. This is the YAGNI principle from extreme programming which I had read about but forgot to actually heed!
+          Getting checkboxes to scale nicely across browsers is no picnic
+          If you don't check with a screen reader you will have screen reader issues
+          Likewise you can't assume keyboard navigation will just work
+          CSS Transitions and Animations are very powerful, if tricky to debug and should be used in favour of javascript for basic animation.
+          Scroll-padding is handy if you have fixed/absolute elements but it can be rather fickle at the moment.
+          Viewport units (vw and vh) do not take account of scrollbars which can lead to some subtle but annoying layout errors.
+          CSS variables are great for reducing repetition and marshalling settings in one place, being able to set them in media queries helps avoid bloat.
+
       Incorporate my notes on HTML, CSS etc
       Link to github of this file
       Link to git log?
@@ -75,16 +103,15 @@ Include an image carousel (the image carousel must be built into your website, a
   
     REFACTORING
 
-      Get rid of multiple transitions mechanism
-        It is broken and there isn't time to fix/redo it.
-
       Factor out use of !important in force_overlay_visible
         It is currently needed as carousel components are identified with ids
         Classes should be equally specific so force_overlay_visible being later
           should mean it wins.
 
   DONE
-    Keyboard navigation
+    Get rid of multiple transitions mechanism
+      It is broken and there isn't time to fix/redo it.
+    Keyboard navigation testing
     Make carousel control overlay when tabbing
     Learning section icons may be unneccesarily large, check and scale down if OTT
     Added new breakpoint at 350px to change text justification to left
@@ -132,6 +159,7 @@ Include an image carousel (the image carousel must be built into your website, a
       Carousel buttons are graphical, added aria-labels to describe them
       Also added explanatory aria-label for Automatic checkbox
     FIXED BUGS
+      Fixed bug in getImageList that would have prevented retrying. Was calling the wrong function to retry!
       Keyboard navigation broke hover!
         More specifically the code I wrote to control overlay visibility using opacity broke hover!
         Overlay hover just stops working if overlay is set to 0 in JavaScript
