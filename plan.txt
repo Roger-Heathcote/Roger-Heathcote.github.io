@@ -4,6 +4,8 @@ TODO
 
   HIGH PRIORITY
 
+    Chrome Audits - fix aspect ration.
+
     Spellcheck and correct copy
 
     Sanity check: double check all required FCC modules completed
