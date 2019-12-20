@@ -4,7 +4,7 @@ TODO
 
   HIGH PRIORITY
 
-    Chrome Audits - fix aspect ration.
+    Chrome Audits - fix aspect ratio.
 
     Spellcheck and correct copy
 

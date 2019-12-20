@@ -12,12 +12,14 @@ html{
     --LGB-end: #FFFF99;
     --MAX-WIDTH: 1500px;
     --TOP-MENU-HEIGHT: 4rem;
+    --FONT-SIZE: 1rem; /* should be overridden by media queries but just incase */
     scroll-padding-top: 4rem;
 }
 body {
     color: #EEE;
     background-color: #333;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--FONT-SIZE);
     text-align: justify;
     margin-left: auto;
     margin-right: auto;
@@ -28,13 +30,16 @@ body {
 h1, h2, h3{
     padding: 1rem 0.5rem 1rem 0.5rem;
 }
-h1{ font-size: 2rem; }
-h2{ font-size: 1.7rem; }
-h3{ font-size: 1.5rem; }
+h1{ font-size: calc( var(--FONT-SIZE) * 1.2) }
+h2{ font-size: calc( var(--FONT-SIZE) * 1.1) }
+h3{ font-size: calc( var(--FONT-SIZE) * 1) }
 em { font-weight: bold; }
 ul, p, figure{
     padding-left: 0.5em;
     padding-right: 0.5em;
+}
+a:visited{
+    color: rgb(92, 179, 250);
 }
 a:focus, #OL_left_button:focus, #OL_right_button:focus, #OL_auto_checkbox:focus{
     outline: 3px solid red;
@@ -57,6 +62,9 @@ header{
     color: #111;
     background: linear-gradient(90deg, var(--LGB-start), var(--LGB-end));
 }
+#stark_truths{
+    padding-top: 1rem;
+}
 #OL_auto_checkbox{
     /* Turns out it's harder than you'd think to scale a checkbox nicely! */
 }
@@ -72,7 +80,7 @@ p{
     height: var(--TOP-MENU-HEIGHT);
     width: 100%;
     background: hsl(200, 100%, 30%);
-    font-size: 2rem;
+    font-size: calc( var(--FONT-SIZE) * 1.3);
 }
 #top_menu ul, #learning_profile_links{
     display: flex;
@@ -85,8 +93,8 @@ p{
     color: white;
     text-decoration: none;
 }
-#truth_bullets li, #learning li{
-    list-style-type: circle;
+#truth_bullets li, #learning figure li{
+    list-style-type: disc;
     list-style-position: inside;
     text-indent: -1em;
     padding-left: 1em;
@@ -113,6 +121,8 @@ figcaption{
 #carousel{
     min-height: var(--img-size);
     min-width: var(--img-size);
+    /* max-height: var(--MAX-WIDTH); */
+    /* max-width: var(--MAX-WIDTH); */
     float: left;
     margin-bottom: 1rem;
     margin-right: 1rem;
@@ -197,33 +207,31 @@ figcaption{
 @media (min-width: 1281px) {
     body{
         --img-size: 25vw;
-        font-size: 1.5rem;
+        --FONT-SIZE: 1.3rem;
     }
 }
 @media (max-width: 1280px) {
     body{
         --img-size: 49vw;
         --TOP-MENU-HEIGHT: 3rem;
-        font-size: 1rem;
+        --FONT-SIZE: 1.1rem;
     }
-    #top_menu{ font-size: 1.5rem; }
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     body{
-        --img-size: 100vw;
-        --TOP-MENU-HEIGHT: 2rem;
+        --img-size: 99vw;
+        --TOP-MENU-HEIGHT: 2.5rem;
+        --FONT-SIZE: 1rem;
     }
-    #top_menu{ font-size: 1rem; }
-    h1{ font-size: 1.5rem; }
+    #top_menu{ font-size: 1.1rem; }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #top_menu ul{
         flex-direction: column;
     }
     body {
-        --TOP-MENU-HEIGHT: 4.5rem;
+        --TOP-MENU-HEIGHT: 6rem;
     }
-    h1{ font-size: 1.5rem; }
 }
 
 @media (max-width: 350px) {
