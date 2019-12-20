@@ -4,8 +4,7 @@ TODO
 
   HIGH PRIORITY
 
-    Sanity check: double check all required FCC modules completed
-    Sanity check: double check if github link is the one they asked for
+    None - woo!
 
   LOW PRIORITY
 
@@ -20,7 +19,6 @@ TODO
     Permit more than one transition e.g. crossfade, left wipe, right wipe etc.
     Allow smaller alternative image files so not to waste bandwidth for small screens
     Make carousel into a web component
-
 
 APPENDIXES
 
@@ -61,11 +59,10 @@ BUGS
 DONE
 DONE
 DONE
-  Chrome Audits
-    Fixed aspect ratio issue with icons.Also found and fixed contrast issue with new link
-      Scores all at 100% now, except for one which is to do with the server, not the code.
-  Further testing with screen reader
-    Tested with NVDA, results liveable, added finding to Testing Findings subsection of Learning.
+
+  Sanity check: double check all required FCC modules completed
+  Sanity check: double check if github link is the one they asked for
+    Actually they want the page code link, not my profile link, glad I checked!
   Incorporate design decisions
   Incorporate LEARNING EXTRAS
   Spellcheck and correct copy
@@ -142,6 +139,14 @@ DONE
 ACCESSIBILITY
 ACCESSIBILITY
 ACCESSIBILITY
+
+  Chrome Audits
+    Fixed aspect ratio issue with icons. Also found and fixed contrast issue with new link
+      Scores all at 100% now, except for one which is to do with the server, not the code.
+  Further testing with screen reader
+    Tested with NVDA, results liveable, added finding to Testing Findings subsection of Learning.
+  Added "Back to top" link to improve tabbing experience.
+
   Made title more descriptive
   Improved nav contrast for accessibility
   Carousel buttons are graphical, added aria-labels to describe them
@@ -151,6 +156,7 @@ ACCESSIBILITY
 BUGFIXES
 BUGFIXES
 BUGFIXES
+
   Fixed bug in getImageList that would have prevented retrying. Was calling the wrong function to retry!
   Keyboard navigation broke hover!
     More specifically the code I wrote to control overlay visibility using opacity broke hover!
