@@ -4,20 +4,10 @@ TODO
 
   HIGH PRIORITY
 
-    Chrome Audits - fix aspect ratio.
-
-    Spellcheck and correct copy
-
     Sanity check: double check all required FCC modules completed
     Sanity check: double check if github link is the one they asked for
 
-    Incorporate LEARNING EXTRAS
-
   LOW PRIORITY
-
-    Further testing with screen reader
-    Any way to test with something that isn't Orka?
-      Maybe test on a windows box?
 
     Investigate other color schemes
       paying attention to contrast ratio for accessibility
@@ -40,10 +30,6 @@ APPENDIXES
     Link to github of this file
     Link to git log?
 
-  ROOM FOR IMPROVEMENT
-
-
-
 BUGS
 BUGS
 BUGS
@@ -63,16 +49,26 @@ BUGS
       Cannot duplicate as of yet. Seems to just turn up when browser is left alone for a while.
       Doesn't have any noticable effect as far as I can tell.
 
-REFACTORING
-REFACTORING
-REFACTORING
+    Tabbing seemingly not working in Safari
+      First tab jumps up to the url bar, subsequent tabs just cycle around the browser chrome.
+      Only had two minutes on somebody else's laptop at a meetup to fiddle with it though so it
+      might just me being unused to macbooks.
 
-  None.
+    Scroll padding not working in Safari
+      Feature in preview so may be able to fix with a prefix but no way to test before deadline now.
+
 
 DONE
 DONE
 DONE
-
+  Chrome Audits
+    Fixed aspect ratio issue with icons.Also found and fixed contrast issue with new link
+      Scores all at 100% now, except for one which is to do with the server, not the code.
+  Further testing with screen reader
+    Tested with NVDA, results liveable, added finding to Testing Findings subsection of Learning.
+  Incorporate design decisions
+  Incorporate LEARNING EXTRAS
+  Spellcheck and correct copy
   Factor out use of !important in force_overlay_visible
     Plan B: Augment carousel elements with classes and change css to use classes, leave JS alone.
       Worked first time and was simpler than I had hoped.
@@ -87,19 +83,18 @@ DONE
     Copy is now in index.html
     Links to github, FCC and codewars
     Links in index.html
-  Spec
+  Meet spec
     Include an image carousel (the image carousel must be built into your website, a link to a separate page or CodePen will not be accepted)
     Responsive (works on mobile and desktop)
     Display one image at a time
     Move between images when clicking navigation buttons
     Toggle automatically looping through all images with a play/pause button
     Allow keyboard navigation between images with the left/right arrow keys
-  Goals
-    High priority...
-      DO Whole page should be very accessible - test with a screen reader
-      DO Should work with a flexible number of images
-      DO Should be able to start before all images have been downloaded with more images added as they arrive
-      DO Should be configurable without touching the code files e.g. using a text or json file
+  Meet goals
+    Whole page should be very accessible - test with a screen reader
+    Should work with a flexible number of images
+    Should be able to start before all images have been downloaded with more images added as they arrive
+    Should be configurable without touching the code files e.g. using a text or json file
   Get rid of multiple transitions mechanism
     It is broken and there isn't time to fix/redo it
   Keyboard navigation testing

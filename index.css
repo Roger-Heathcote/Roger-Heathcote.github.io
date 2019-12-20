@@ -38,9 +38,8 @@ ul, p, figure{
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
-a:visited{
-    color: rgb(92, 179, 250);
-}
+a{ color: hsl(207, 94%, 82%); }
+a:visited{ color: hsl(207, 94%, 57%); }
 a:focus, #OL_left_button:focus, #OL_right_button:focus, #OL_auto_checkbox:focus{
     outline: 3px solid red;
 }
